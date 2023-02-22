@@ -26,6 +26,7 @@ ro.crypto.volume.metadata.method=dm-default-key
 
 # Display
 debug.sf.disable_backpressure=1
+debug.sf.enable_transaction_tracing=false
 persist.sys.sf.native_mode=260
 ro.surface_flinger.set_idle_timer_ms=4000
 ro.surface_flinger.set_touch_timer_ms=4000
