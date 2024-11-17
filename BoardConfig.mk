@@ -115,6 +115,9 @@ TARGET_POWERSHARE_NODE := /sys/class/qcom-battery/wireless_boost_en
 # Radio
 ADD_RADIO_FILES := false
 
+# Security patch level
+VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
+
 # Recovery
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 TARGET_NO_RECOVERY := true
