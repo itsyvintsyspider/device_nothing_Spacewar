@@ -4,6 +4,7 @@ ro.vendor.dirac.acs.forceAfm=true
 ro.vendor.dirac.acs.storeSettings=1
 ro.vendor.dirac.acs.ignore_error=1
 ro.vendor.dirac.acs.startAtBoot=3
+vendor.audio.feature.compr_voip.enable=false
 
 # Bluetooth
 persist.vendor.bluetooth.sar_in=0x26-0x26-0x26
