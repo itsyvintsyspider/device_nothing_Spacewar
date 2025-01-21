@@ -61,7 +61,6 @@ function lib_to_package_fixup_vendor_variants() {
             vendor.qti.latency*)
             echo "$1_vendor"
             ;;
-        libOmxCore | \
             libwpa_client)
             # Android.mk only packages
             ;;

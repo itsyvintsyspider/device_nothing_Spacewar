@@ -261,7 +261,6 @@ vendor/lib/libmulawdec.so
 vendor/lib/libqtigef.so
 vendor/lib/libsmwrapper.so
 vendor/lib/libssrec.so;MODULE_SUFFIX=_phone1;OVERRIDES=libssrec
-vendor/lib/libstagefright_soft_qtiflacdec.so
 vendor/lib/libsurround_3mic_proc.so
 vendor/lib/vendor.qti.voiceprint@1.0.so
 vendor/lib64/hw/audio.primary.lahaina.so;MODULE_SUFFIX=_phone1;OVERRIDES=audio.primary.lahaina
@@ -295,7 +294,6 @@ vendor/lib64/liblvacfs_wrapper.so
 vendor/lib64/libmulawdec.so
 vendor/lib64/libqtigef.so
 vendor/lib64/libssrec.so;MODULE_SUFFIX=_phone1;OVERRIDES=libssrec
-vendor/lib64/libstagefright_soft_qtiflacdec.so
 vendor/lib64/vendor.qti.voiceprint@1.0.so
 
 # Bluetooth
@@ -1424,7 +1422,6 @@ vendor/etc/seccomp_policy/wfdvndservice.policy
 vendor/etc/seccomp_policy/wifidisplayhalservice.policy
 vendor/etc/wfdconfig.xml
 vendor/lib/libFileMux_proprietary.so
-vendor/lib/libOmxVideoDSMode.so;DISABLE_CHECKELF
 vendor/lib/libmiracast.so
 vendor/lib/libmmrtpdecoder_proprietary.so
 vendor/lib/libmmrtpencoder_proprietary.so
