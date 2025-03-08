@@ -30,10 +30,8 @@ vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/vendor.qti.hardware.dsp@1.0.so
 
 # Audio
-system/etc/permissions/com.dirac.acs.xml
-system/etc/sysconfig/preinstalled-packages-dirac.xml
-system/priv-app/DiracAudioControlService_DMP/DiracAudioControlService_DMP.apk
-system/priv-app/NothingDiracService_DMP/NothingDiracService_DMP.apk
+system/etc/sysconfig/preinstalled-packages-audioeffect.xml
+system/priv-app/NothingAudioEffectService/NothingAudioEffectService.apk
 system_ext/etc/hdr_config/ans_off/ans_config.txt
 system_ext/etc/hdr_config/ans_on/ans_config.txt
 system_ext/etc/hdr_config/main_inv_ls/RPP_BiquadHPF_config.txt
@@ -177,7 +175,6 @@ vendor/etc/audio/sku_yupik/sound_trigger_mixer_paths_yupikqrd.xml
 vendor/etc/audio/sku_yupik/sound_trigger_platform_info.xml
 vendor/etc/audio/audio_policy_configuration.xml
 vendor/etc/dirac/dirac_resource.dar
-vendor/etc/dirac/interface.json
 vendor/etc/lvacfs_params/1mic/LVACFS_Calibration360.dat
 vendor/etc/lvacfs_params/1mic/LVACFS_Configuration.txt
 vendor/etc/lvacfs_params/1mic/LVIMFS_Parameter_xxxx_ID10_He_USB_Digital_48K.txt
@@ -221,56 +218,43 @@ vendor/etc/lvacfs_params/4mic/LVIMFS_Parameter_xxxx_ID2_MIC_HDR_voicefocus.txt
 vendor/etc/lvacfs_params/4mic/LVIMFS_Parameter_xxxx_ID3_MIC_HDR_wideband.txt
 vendor/etc/lvacfs_params/4mic/LVIMFS_Parameter_xxxx_ID4_MIC_Cam_back.txt
 vendor/firmware/tfa98xx.cnt
-vendor/lib/hw/audio.primary.lahaina.so;MODULE_SUFFIX=_phone1;OVERRIDES=audio.primary.lahaina
 vendor/lib/hw/sound_trigger.primary.lahaina.so
 vendor/lib/rfsa/adsp/capi_v2_aptX_CLHDAD_Speech_Decoder.so
 vendor/lib/rfsa/adsp/capi_v2_aptX_CLHDADV_Encoder.so
 vendor/lib/soundfx/libasphere.so
-vendor/lib/soundfx/libdiraceffect-afm.so
+vendor/lib/soundfx/libdiraceffect_NT.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 vendor/lib/soundfx/libshoebox.so
-vendor/lib/liba2dpoffload.so;MODULE_SUFFIX=_phone1;OVERRIDES=liba2dpoffload
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
-vendor/lib/libadiertac.so
-vendor/lib/libadm.so
 vendor/lib/libadpcmdec.so
 vendor/lib/libaudcal.so
-vendor/lib/libaudio_log_utils.so
 vendor/lib/libaudioalsa.so
-vendor/lib/libaudioconfigstore.so
-vendor/lib/libaudioparsers.so
 vendor/lib/libcapiv2svacnn.so
 vendor/lib/libcapiv2svarnn.so
 vendor/lib/libcapiv2vop.so
 vendor/lib/libdirac.so
-vendor/lib/libdrc.so
 vendor/lib/libdsd2pcm.so
 vendor/lib/libgcs-calwrapper.so
 vendor/lib/libgcs-ipc.so
 vendor/lib/libgcs-osal.so
 vendor/lib/libgcs.so
-vendor/lib/libhdmipassthru.so
 vendor/lib/liblistensoundmodel2.so
 vendor/lib/lib_lvacfs.so
+vendor/lib/libadiertac.so
 vendor/lib/liblvacfs_wrapper.so
 vendor/lib/libmulawdec.so
-vendor/lib/libqtigef.so
 vendor/lib/libsmwrapper.so
-vendor/lib/libssrec.so;MODULE_SUFFIX=_phone1;OVERRIDES=libssrec
-vendor/lib/libsurround_3mic_proc.so
 vendor/lib/vendor.qti.voiceprint@1.0.so
-vendor/lib64/hw/audio.primary.lahaina.so;MODULE_SUFFIX=_phone1;OVERRIDES=audio.primary.lahaina
 vendor/lib64/hw/sound_trigger.primary.lahaina.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
 vendor/lib64/soundfx/libshoebox.so
-vendor/lib64/liba2dpoffload.so;MODULE_SUFFIX=_phone1;OVERRIDES=liba2dpoffload
 vendor/lib64/libacdb-fts.so
 vendor/lib64/libacdbloader.so
 vendor/lib64/libacdbrtac.so
@@ -293,7 +277,6 @@ vendor/lib64/lib_lvacfs.so
 vendor/lib64/liblvacfs_wrapper.so
 vendor/lib64/libmulawdec.so
 vendor/lib64/libqtigef.so
-vendor/lib64/libssrec.so;MODULE_SUFFIX=_phone1;OVERRIDES=libssrec
 vendor/lib64/vendor.qti.voiceprint@1.0.so
 
 # Bluetooth
@@ -700,6 +683,7 @@ vendor/firmware/yupik_ipa_fws.b03
 vendor/firmware/yupik_ipa_fws.b04
 vendor/firmware/yupik_ipa_fws.elf
 vendor/firmware/yupik_ipa_fws.mdt
+vendor/firmware/qps615_fw.bin
 
 # Diag
 vendor/bin/diag-router
@@ -829,8 +813,6 @@ vendor/etc/media_codecs_yupik_v0.xml
 vendor/etc/media_codecs_yupik_v1.xml
 vendor/etc/media_codecs_performance_yupik_v0.xml
 vendor/etc/media_codecs_performance_yupik_v1.xml
-vendor/etc/media_codecs_performance.xml
-vendor/etc/media_codecs.xml
 vendor/etc/media_profiles_V1_0.xml
 vendor/etc/media_profiles_vendor.xml
 vendor/etc/media_profiles_yupik_v0.xml
@@ -931,6 +913,7 @@ vendor/lib64/libqcrilNrFramework.so
 vendor/lib64/libqcrilNrLogger.so
 vendor/lib64/libqcrilNrQtiBus.so
 vendor/lib64/libqcrilNrQtiMutex.so
+vendor/lib64/libqcrilNr.so
 vendor/lib64/libqcrildatactl.so
 vendor/lib64/libril-db.so
 vendor/lib64/libril-qc-ltedirectdisc.so
@@ -977,9 +960,6 @@ vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0.so;MODULE_SUFFIX=_v
 vendor/lib64/vendor.qti.hardware.radio.uim@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.radio.uim@1.1.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.radio.uim@1.2.so;MODULE_SUFFIX=_vendor
-
-# QCRIL - from BSP
-vendor/lib64/libqcrilNr.so|ac7e1b2904811512b8fda8a985f3d1d1650245d9
 
 # QMI
 vendor/bin/irsc_util
@@ -1074,6 +1054,7 @@ vendor/lib64/vendor.qti.hardware.eid@1.0.so
 vendor/bin/hw/vendor.qti.esepowermanager@1.1-service
 vendor/etc/init/vendor.qti.esepowermanager@1.1-service.rc
 vendor/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so
+vendor/lib64/libesepmconfig.so
 vendor/lib64/vendor.qti.esepowermanager@1.0.so
 vendor/lib64/vendor.qti.esepowermanager@1.1.so
 
@@ -1124,6 +1105,15 @@ vendor/etc/sensors/config/kodiak_dynamic_sensors.json
 vendor/etc/sensors/config/kodiak_idp_ak991x_0.json
 vendor/etc/sensors/config/kodiak_idp_lsm6dst_0.json
 vendor/etc/sensors/config/kodiak_idp_lsm6dst_1.json
+vendor/etc/sensors/config/qcs6490_default_sensors.json
+vendor/etc/sensors/config/qcs6490_power_0.json
+vendor/etc/sensors/config/qcs6490_rbx_icm4x6xx_0.json
+vendor/etc/sensors/config/qcs6490_rbx_icp101xx_0.json
+vendor/etc/sensors/config/qcs6490_rbx_navmez_ak991x_0.json
+vendor/etc/sensors/config/kodiak_altek_icm4x6xa_0.json
+vendor/etc/sensors/config/kodiak_altek_idp_icm4x6xa_0.json
+vendor/etc/sensors/config/qcs6490_rbx_navmez_icm4x6xx_0.json
+vendor/etc/sensors/config/qcs6490_rbx_navmez_rev2_icm4x6xx_0.json
 vendor/etc/sensors/config/kodiak_irq.json
 vendor/etc/sensors/config/kodiak_lps22hh_0.json
 vendor/etc/sensors/config/kodiak_lsm6dst_0.json
