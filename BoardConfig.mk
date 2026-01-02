@@ -12,6 +12,17 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a76
 
 # Audio
+AUDIO_FEATURE_ENABLED_DLKM := true
+AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT := true
+AUDIO_FEATURE_ENABLED_GEF_SUPPORT := true
+AUDIO_FEATURE_ENABLED_GKI := true
+AUDIO_FEATURE_ENABLED_INSTANCE_ID := true
+AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
+AUDIO_FEATURE_ENABLED_SSR := true
+AUDIO_FEATURE_ENABLED_SVA_MULTI_STAGE := true
+BOARD_SUPPORTS_OPENSOURCE_STHAL := true
+BOARD_SUPPORTS_SOUND_TRIGGER := true
+BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := false
 
 # AVB - Disable Verification
@@ -55,13 +66,13 @@ BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_SURFACEFLINGER_UDFPS_LIB := //$(DEVICE_PATH):libudfps_extension.phone1
 
 # Kernel
-BOARD_KERNEL_BASE := 0x00000000
+BOARD_BOOT_HEADER_VERSION := 3
 BOARD_KERNEL_CMDLINE := \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
     lpm_levels.sleep_disabled=1 \
-    msm_rtb.filter=0x237 \
     service_locator.enable=1 \
+    androidboot.selinux=permissive \
     androidboot.usbcontroller=a600000.dwc3 \
     swiotlb=0 \
     loop.max_part=7 \
@@ -69,21 +80,32 @@ BOARD_KERNEL_CMDLINE := \
     pcie_ports=compat \
     iptable_raw.raw_before_defrag=1 \
     ip6table_raw.raw_before_defrag=1
-BOARD_KERNEL_PAGESIZE    := 4096
+
+BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
-KERNEL_DEFCONFIG := phone1_defconfig
-KERNEL_FULL_LLVM := true
+TARGET_KERNEL_SOURCE := kernel/nothing/sm7325
+TARGET_KERNEL_CONFIG := vendor/lahaina-qgki_defconfig vendor/debugfs.config
+TARGET_KERNEL_NO_GCC := true
+
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load.recovery))
+BOOT_KERNEL_MODULES := $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD)
+TARGET_MODULE_ALIASES += wlan.ko:qca_cld3_qca6750.ko
 
 # OTA
 TARGET_OTA_ASSERT_DEVICE := Spacewar|spacewar
 
 # Partitions - A/B
-AB_OTA_PARTITIONS := boot dtbo odm product system system_ext vendor vendor_boot vbmeta vbmeta_system
+AB_OTA_PARTITIONS := boot dtbo odm product system system_ext vendor vendor_boot vbmeta vbmeta_system vendor_dlkm
 AB_OTA_UPDATER := true
 
 # Partitions - Dynamic
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext odm vendor
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext odm vendor vendor_dlkm
 
 # Partitions - Filesystems
 BOARD_EXT4_SHARE_DUP_BLOCKS := true
@@ -92,6 +114,7 @@ BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Partitions - Metadata
@@ -102,6 +125,7 @@ TARGET_COPY_OUT_ODM := odm
 TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # Partitions - Sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x06000000

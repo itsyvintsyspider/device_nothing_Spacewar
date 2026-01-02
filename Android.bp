@@ -23,6 +23,13 @@ prebuilt_hidl_interfaces {
 }
 
 prebuilt_hidl_interfaces {
+    name: "hidl_SensorExtension_interface",
+    interfaces: [
+        "vendor.noth.hardware.sensor.sensor_extension@1.0::ISensorExtension",
+    ],
+}
+
+prebuilt_hidl_interfaces {
     name: "hidl_DspSerivce_interface",
     interfaces: [
         "vendor.qti.hardware.dsp@1.0::IDspService",

@@ -26,14 +26,6 @@ source "${HELPER}"
 
 function vendor_imports() {
     cat <<EOF >>"$1"
-        "hardware/qcom/display",
-        "hardware/qcom/display/gralloc",
-        "hardware/qcom/display/libdebug",
-        "vendor/qcom/common/vendor/adreno-r",
-        "vendor/qcom/common/vendor/display/5.4",
-        "vendor/qcom/common/vendor/gps-legacy",
-        "vendor/qcom/common/vendor/media-5.4",
-        "vendor/qcom/common/vendor/wlan-legacy",
 EOF
 }
 

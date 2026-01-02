@@ -66,8 +66,6 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/displayconfig/display_id_4630946480328692354.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630946480328692354.xml
 
-PRODUCT_VENDOR_PROPERTIES += debug.sf.auto_latch_unsignaled=0
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
@@ -121,7 +119,8 @@ PRODUCT_PACKAGES += \
     ueventd.nothing.rc
 
 # Kernel
-PRODUCT_ENABLE_UFFD_GC := false
+PRODUCT_ENABLE_UFFD_GC := true
+PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
 # Keymaster
 PRODUCT_PACKAGES += \
@@ -264,4 +263,4 @@ PRODUCT_COPY_FILES += \
 
 # Proprietary Vendor
 $(call inherit-product, vendor/nothing/phone1/phone1-vendor.mk)
-$(call inherit-product, vendor/nothing/camera/nothing-camera.mk)
+$(call inherit-product-if-exists, vendor/nothing/camera/nothing-camera.mk)

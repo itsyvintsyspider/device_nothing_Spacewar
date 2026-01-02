@@ -35,7 +35,6 @@ debug.sf.disable_backpressure=1
 debug.sf.enable_transaction_tracing=false
 persist.sys.sf.native_mode=260
 ro.surface_flinger.set_idle_timer_ms=4000
-ro.surface_flinger.set_touch_timer_ms=4000
 ro.surface_flinger.set_display_power_timer_ms=1000
 ro.surface_flinger.use_content_detection_for_refresh_rate=true
 ro.surface_flinger.clear_slots_with_set_layer_buffer=false
