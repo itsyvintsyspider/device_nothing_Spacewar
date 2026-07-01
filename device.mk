@@ -196,6 +196,14 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     ueventd.Spacewar.rc
 
+# ION
+$(call soong_config_set_bool,libion,legacy_impl,true)
+
+# IPACM
+PRODUCT_PACKAGES += \
+    ipacm \
+    IPACM_cfg.xml
+
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
 OVERRIDE_ENABLE_UFFD_GC := true
