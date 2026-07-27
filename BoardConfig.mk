@@ -100,7 +100,9 @@ TARGET_MODULE_ALIASES += wlan.ko:qca_cld3_qca6750.ko
 TARGET_OTA_ASSERT_DEVICE := Spacewar|spacewar
 
 # Partitions - A/B
-AB_OTA_PARTITIONS := boot dtbo odm product system system_ext vendor vendor_boot vbmeta vbmeta_system vendor_dlkm
+AB_OTA_PARTITIONS := boot dtbo odm product system system_ext vendor vendor_boot vbmeta vbmeta_system vendor_dlkm \
+    abl aop bluetooth cpucp devcfg dsp featenabler hyp imagefv keymaster \
+    modem multiimgoem qupfw shrm tz uefisecapp xbl xbl_config
 AB_OTA_UPDATER := true
 
 # Partitions - Dynamic
@@ -140,14 +142,15 @@ BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 0x06000000
 TARGET_POWERSHARE_NODE := /sys/class/qcom-battery/wireless_boost_en
 
 # Radio
-ADD_RADIO_FILES := false
+ADD_RADIO_FILES := true
 
 # Security patch level
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # Recovery
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-TARGET_NO_RECOVERY := true
+TARGET_NO_RECOVERY := false
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/init/fstab.default
 
 # SELinux

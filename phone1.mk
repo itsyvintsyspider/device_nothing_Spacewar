@@ -22,6 +22,14 @@ $(call inherit-product, device/nothing/phone1/device.mk)
 # Inherit from the Neoteric configuration.
 $(call inherit-product, vendor/neoteric/target/product/neoteric-target.mk)
 
+# Bridge audio HAL features into the qtiaudio Soong namespace.
+$(call soong_config_set,qtiaudio,feature_gki,true)
+$(call soong_config_set,qtiaudio,feature_extended_compress_format,true)
+$(call soong_config_set,qtiaudio,feature_gef_support,true)
+$(call soong_config_set,qtiaudio,feature_instance_id,true)
+$(call soong_config_set,qtiaudio,feature_sound_trigger,true)
+$(call soong_config_set,qtiaudio,feature_ext_amplifier,false)
+
 PRODUCT_BRAND := Nothing
 PRODUCT_DEVICE := phone1
 PRODUCT_MANUFACTURER := Nothing
