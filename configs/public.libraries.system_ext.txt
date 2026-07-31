@@ -1,1 +1,3 @@
-libencoderjpeg_jni.so nopreload
+libofflineproc_jni.so
+libarcsoft_mf_superresolution.so
+libencoderjpeg_jni.so 64
