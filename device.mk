@@ -64,6 +64,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
     libcamera2ndk_vendor \
+    libui-v34 \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
 # Dalvik
@@ -71,7 +72,8 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
 
 # Display
 PRODUCT_SOONG_NAMESPACES += \
-    hardware/qcom-caf/sm8350/display
+    hardware/qcom-caf/sm8350/display \
+    hardware/nothing
 
 PRODUCT_PACKAGES += \
     libqdMetaData \
@@ -158,12 +160,14 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.3.vendor
 
-# NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2.vendor \
+    android.hardware.nfc-service.nxp \
+    com.android.nfc_extras \
     android.hardware.nfc@1.0-impl:64 \
+    vendor.nxp.nxpnfc@2.0 \
     NfcNci \
-    Tag
+    Tag \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
@@ -190,10 +194,6 @@ PRODUCT_PACKAGES += \
     Phone1SystemUI \
     Phone1SystemUIAOSPA \
     aptxalsOverlay
-
-# Paranoid Glyph
-PRODUCT_PACKAGES += \
-    ParanoidGlyphPhone1
 
 # Partitions - Dynamic
 PRODUCT_BUILD_ODM_IMAGE := true
@@ -227,6 +227,13 @@ TARGET_COMMON_QTI_COMPONENTS := \
     usb \
     wfd \
     wlan
+
+# Copy Nothing OS Audio Files to Product Partition
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*.ogg,device/nothing/phone1/media/audio/alarms,$(TARGET_COPY_OUT_PRODUCT)/media/audio/alarms) \
+    $(call find-copy-subdir-files,*.ogg,device/nothing/phone1/media/audio/notifications,$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications) \
+    $(call find-copy-subdir-files,*.ogg,device/nothing/phone1/media/audio/ringtones,$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones) \
+    $(call find-copy-subdir-files,*.ogg,device/nothing/phone1/media/audio/ui,$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui)
 
 # Sensors
 PRODUCT_COPY_FILES += \
