@@ -43,7 +43,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=Spacewar \
     SystemDevice=Spacewar \
     SystemName=Spacewar \
-    BuildFingerprint="Nothing/Spacewar/Spacewar:12/SKQ1.211230.001/1666412462:user/release-keys"
+    BuildFingerprint="Nothing/Spacewar/Spacewar:15/AQ3A.240929.001/2604161140:user/release-keys"
 
 # Boot animation resolution.
 TARGET_BOOT_ANIMATION_RES := 1080
