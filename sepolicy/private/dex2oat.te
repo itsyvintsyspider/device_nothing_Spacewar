@@ -1,0 +1,1 @@
+dontaudit dex2oat { privapp_data_file system_data_file }:dir search;

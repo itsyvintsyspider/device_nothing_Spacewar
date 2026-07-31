@@ -1,0 +1,3 @@
+dontaudit surfaceflinger default_android_service:service_manager find;
+dontaudit init debugfs_tracing_debug:dir mounton;
+dontaudit { fsck vdc linkerconfig } self:capability kill;
