@@ -1,5 +1,12 @@
 DEVICE_PATH := device/nothing/phone1
 
+# Properties
+TARGET_SYSTEM_PROP := $(DEVICE_PATH)/properties/system.prop
+TARGET_VENDOR_PROP := $(DEVICE_PATH)/properties/vendor.prop
+TARGET_ODM_PROP := $(DEVICE_PATH)/properties/odm.prop
+TARGET_PRODUCT_PROP := $(DEVICE_PATH)/properties/product.prop
+TARGET_SYSTEM_EXT_PROP := $(DEVICE_PATH)/properties/system_ext.prop
+
 # A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 

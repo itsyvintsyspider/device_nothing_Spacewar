@@ -9,3 +9,6 @@ vendor.audio.feature.vbat.enable=false
 
 # Display
 persist.sys.sf.color_mode=0
+
+# ODM
+ro.vendor.qti.va_odm.support=1

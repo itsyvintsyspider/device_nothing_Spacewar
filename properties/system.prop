@@ -1,13 +1,112 @@
+# Pre-Rendering
+ro.vendor.perf.scroll_opt=true
+
+# Dalvik
+dalvik.vm.dex2oat64.enabled=true
+
+# Audio
+use.voice.path.for.pcm.voip=true
+
 # Bluetooth
 persist.vendor.bluetooth.modem_nv_support=true
 persist.vendor.btstack.enable.gatt_robust_caching=false
 
-# Display
-persist.sys.brightness.low.gamma=true
+# Camera
+camera.disable_zsl_mode=true
 
-# Nothing Features
-ro.build.nothing.feature.base=0x4458438124a040126b4247b97ffL
-ro.build.nothing.feature.diff.device.Spacewar=0x8a0042a4041a032c34800L
+# CNE
+persist.vendor.cne.feature=1
+
+# Deep Sleep
+pm.sleep_mode=1
+vendor.post_boot.parsed=1s
+
+# Display
+debug.sf.enable_hwc_vds=1
+persist.sys.sf.native_mode=260
+persist.sys.brightness.low.gamma=true
+sys.brightness.disable_gamma_conversion=true
+
+# Fingerprint
+ro.bootloader.locked=0
+
+# IMS
+persist.data.iwlan=1
+persist.data.iwlan.enable=true
+persist.data.iwlan.ipsec.ap=1
+persist.dbg.ims_volte_enable=1
+persist.dbg.volte_avail_ovr=1
+persist.dbg.vt_avail_ovr=1
+persist.dbg.wfc_avail_ovr=1
+persist.radio.calls.on.ims=1
+persist.radio.data_ltd_sys_ind=1
+persist.radio.data_con_rprt=1
+persist.radio.rat_on=combine
+persist.radio.VT_HYBRID_ENABLE=1
+persist.sys.phh.ims.caf=true
+persist.sys.strictmode.disable=true
+persist.vendor.ims.enabled=1
+persist.vendor.ims.enable_ims=1
+persist.vendor.radio.calls.on.ims=1
+persist.vendor.radio.force_on_dc=true
+persist.vendor.radio.data_ltd_sys_ind=1
+persist.vendor.radio.data_con_rprt=1
+persist.vendor.wfc.ims.enabled=1
+ro.vendor.radio.5g=3
+persist.dbg.vonr_avail_ovr=1
+persist.radio.is_vonr_enabled_0=true
+persist.radio.is_vonr_enabled_1=true
+persist.radio.nr_mode=3
+persist.vendor.radio.5g=3
+persist.vendor.radio.5g_mode_pref=3
+
+# Media
+media.aac_51_output_enabled=true
+media.settings.xml=/vendor/etc/media_profiles_vendor.xml
+media.stagefright.enable-aac=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-http=true
+media.stagefright.enable-player=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-scan=true
+media.stagefright.thumbnail.prefer_hw_codecs=true
+ro.media.recorder-max-base-layer-fps=60
+vendor.mm.enable.qcom_parser=16777215
+
+# NetMgr
+ro.vendor.use_data_netmgrd=true
+persist.vendor.data.mode=concurrent
+
+# NFC
+ro.nfc.port=I2C
+
+# Radio
+ril.subscription.types=NV,RUIM
+telephony.lteOnCdmaDevice=1
+
+# RmNet
+persist.rmnet.data.enable=true
+persist.data.wda.enable=true
+persist.data.df.dl_mode=5
+persist.data.df.agg.dl_pkt=10
+persist.data.df.agg.dl_size=4096
+persist.data.df.mux_count=8
+persist.data.df.iwlan_mux=9
+persist.data.df.dev_name=rmnet_usb0
 
 # Sensors
 persist.vendor.sensors.enable.mag_filter=true
+
+# Time
+persist.timed.enable=true
+
+# Vendor
+ro.vendor.qti.va_aosp.support=1
+
+# Nt Feature
+ro.build.nothing.feature.base=0x4458438124a040126b4247b97ffL
+ro.build.nothing.feature.diff.device.Spacewar=0x8a0042a4041a032c34800L
+
+# Optimization
+persist.sys.default_scaling_gov=true
+persist.sys.activity_anim_perf_override=true
