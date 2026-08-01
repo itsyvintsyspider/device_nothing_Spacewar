@@ -49,8 +49,18 @@ PRODUCT_PACKAGES += \
 BOARD_AVB_ENABLE := true
 
 # Audio
+
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/mixer_paths_yupikqrd.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_yupik/mixer_paths_yupikqrd.xml
+    $(DEVICE_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_yupik/audio_effects.xml \
+    $(DEVICE_PATH)/configs/audio/audio_policy_configuration_a2dp_offload_disabled.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration_a2dp_offload_disabled.xml \
+    $(DEVICE_PATH)/configs/audio/mixer_paths_yupikqrd.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_yupik/mixer_paths_yupikqrd.xml \
+    $(DEVICE_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
+
+# Dolby Atmos
+$(call inherit-product, hardware/dolby/dolby.mk)
+
+PRODUCT_PACKAGES += \
+    LunarisDolby
 
 # Camera
 PRODUCT_COPY_FILES += \
@@ -141,8 +151,8 @@ PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
 # Keymaster
 PRODUCT_PACKAGES += \
-   android.hardware.keymaster@4.1 \
-   android.hardware.keymaster@4.1.vendor
+    android.hardware.keymaster@4.1 \
+    android.hardware.keymaster@4.1.vendor
 
 # Manifests
 DEVICE_MANIFEST_FILE += \
