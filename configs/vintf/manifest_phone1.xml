@@ -10,7 +10,6 @@
      limitations under the License.
 -->
 <manifest version="2.0" type="device">
-
     <!-- Fingerprint -->
     <hal format="hidl">
         <name>vendor.goodix.hardware.biometrics.fingerprint</name>
@@ -21,7 +20,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-
     <!-- NFC -->
     <hal format="hidl">
         <name>vendor.nxp.nxpnfc</name>
@@ -32,14 +30,4 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
-        <name>vendor.nxp.nxpnfclegacy</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>INxpNfcLegacy</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-
 </manifest>

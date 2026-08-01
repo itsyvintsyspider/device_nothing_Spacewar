@@ -146,11 +146,11 @@ PRODUCT_PACKAGES += \
 
 # Manifests
 DEVICE_MANIFEST_FILE += \
-    $(DEVICE_PATH)/manifest_yupik.xml \
-    $(DEVICE_PATH)/manifest_phone1.xml
+    $(DEVICE_PATH)/configs/vintf/manifest_yupik.xml \
+    $(DEVICE_PATH)/configs/vintf/manifest_phone1.xml
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
-    $(DEVICE_PATH)/phone1_vendor_framework_compatibility_matrix.xml
+    $(DEVICE_PATH)/configs/vintf/phone1_vendor_framework_compatibility_matrix.xml
 
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -160,14 +160,12 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.3.vendor
 
+# NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2.vendor \
-    android.hardware.nfc-service.nxp \
-    com.android.nfc_extras \
     android.hardware.nfc@1.0-impl:64 \
-    vendor.nxp.nxpnfc@2.0 \
     NfcNci \
-    Tag \
+    Tag
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
@@ -176,6 +174,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
     frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
+
+PRODUCT_PACKAGES += \
+    libbase_shim
 
 # Nothing-fwk
 PRODUCT_PACKAGES += \

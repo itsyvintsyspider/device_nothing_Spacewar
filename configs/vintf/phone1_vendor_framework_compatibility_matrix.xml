@@ -24,8 +24,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-
-    <!-- NFC -->
+    <!-- NFC-->
     <hal format="hidl">
         <name>vendor.nxp.nxpnfc</name>
         <transport>hwbinder</transport>
@@ -35,16 +34,4 @@
             <instance>default</instance>
         </interface>
     </hal>
-
-    <!-- Sensors -->
-    <hal format="hidl">
-        <name>vendor.noth.hardware.sensor.sensor_extension</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISensorExtension</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-
 </compatibility-matrix>
