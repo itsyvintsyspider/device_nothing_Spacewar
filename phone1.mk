@@ -47,3 +47,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # Boot animation resolution.
 TARGET_BOOT_ANIMATION_RES := 1080
+
+# Dolby Vision
+TARGET_INCLUDES_DolbyVision := true
