@@ -1,3 +1,4 @@
+# All unpinned blobs are extracted from Spacewar_V3.2-260618-1045
 
 # Adreno Firmware
 vendor/firmware/a660_gmu.bin
@@ -590,6 +591,8 @@ vendor/lib64/libvidhance_stabilizer_g4.so
 vendor/lib64/libvidhance_stabilizer.so
 vendor/lib64/libvidhance.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
+vendor/lib/vendor.qti.hardware.camera.device@1.0.so
+vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
 # Charging
 vendor/bin/hvdcp_opti;MODULE_SUFFIX=_phone1;OVERRIDES=hvdcp_opti

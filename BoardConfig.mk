@@ -56,12 +56,8 @@ BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
 
 # Camera
 TARGET_CAMERA_SERVICE_EXT_LIB := //$(DEVICE_PATH):libcameraservice_extension.Spacewar
-+vendor/lib/vendor.qti.hardware.camera.device@1.0.so
-+vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
- # Charging
- vendor/bin/hvdcp_opti;MODULE_SUFFIX=_phone1;OVERRIDES=hvdcp_opti
-vintsy@Azur ~/n/d/n/phone1 (bka)>
+# Charging
 
 # Display
 TARGET_SCREEN_DENSITY := 420

@@ -49,7 +49,6 @@ PRODUCT_PACKAGES += \
 BOARD_AVB_ENABLE := true
 
 # Audio
-
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_yupik/audio_effects.xml \
     $(DEVICE_PATH)/configs/audio/audio_policy_configuration_a2dp_offload_disabled.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration_a2dp_offload_disabled.xml \
@@ -75,7 +74,12 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service_64 \
     libcamera2ndk_vendor \
     libui-v34 \
-    vendor.qti.hardware.camera.postproc@1.0.vendor
+    vendor.qti.hardware.camera.postproc@1.0.vendor \
+    vendor.qti.hardware.camera.device@1.0.vendor
+
+$(call soong_config_set_bool,camera,override_format_from_reserved,true)
+$(call soong_config_set,libcameraservice,ext_lib,//$(DEVICE_PATH)/configs/camera:libcameraservice_extension.Spacewar)
+$(call soong_config_set,camera,package_name,com.nothing.camera)
 
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
