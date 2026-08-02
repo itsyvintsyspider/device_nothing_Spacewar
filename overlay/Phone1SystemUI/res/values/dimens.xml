@@ -33,4 +33,9 @@
         relies on this value will not be sized correctly. -->
     <item name="pixel_pitch" format="float" type="dimen">63.2</item>
 
+    <!-- Lock screen clock top margin -->
+    <dimen name="keyguard_clock_top_margin">34dp</dimen>
+
+    <!-- Lock screen status view bottom margin -->
+    <dimen name="keyguard_status_view_bottom_margin">28dp</dimen>
 </resources>
