@@ -358,6 +358,10 @@ vendor/lib64/camera/com.qti.eeprom.abra_qtech_p24c64f_imx471_eeprom.so
 vendor/lib64/camera/com.qti.eeprom.abra_truly_p24c64f_imx471_eeprom.so
 vendor/lib64/camera/com.qti.eeprom.irs2381c_polar.so
 vendor/lib64/camera/com.qti.eeprom.truly_cmb433.so
+vendor/lib64/camera/com.qti.eeprom.abra_qtech_p24c128e_imx766_eeprom.so
+vendor/lib64/camera/com.qti.eeprom.abra_qtech_p24c128e_s5kjn1_eeprom.so
+vendor/lib64/camera/com.qti.eeprom.abra_qtech_p24c64f_imx471_eeprom.so
+vendor/lib64/camera/com.qti.eeprom.gt24p128c2csli_imx766.so
 vendor/lib64/camera/com.qti.flash.lm3644.so
 vendor/lib64/camera/com.qti.sensor.abra_qtech_imx471_front.so
 vendor/lib64/camera/com.qti.sensor.abra_qtech_imx766_wide.so
