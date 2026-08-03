@@ -79,7 +79,6 @@ PRODUCT_PACKAGES += \
 
 $(call soong_config_set_bool,camera,override_format_from_reserved,true)
 $(call soong_config_set,libcameraservice,ext_lib,//$(DEVICE_PATH)/configs/camera:libcameraservice_extension.Spacewar)
-$(call soong_config_set,camera,package_name,com.nothing.camera)
 
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
@@ -300,4 +299,4 @@ PRODUCT_COPY_FILES += \
 
 # Proprietary Vendor
 $(call inherit-product, vendor/nothing/phone1/phone1-vendor.mk)
-$(call inherit-product-if-exists, vendor/nothing/camera/nothing-camera.mk)
+# $(call inherit-product-if-exists, vendor/nothing/camera/nothing-camera.mk)
