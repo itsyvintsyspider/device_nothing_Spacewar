@@ -34,8 +34,35 @@
     <item name="pixel_pitch" format="float" type="dimen">63.2</item>
 
     <!-- Lock screen clock top margin -->
-    <dimen name="keyguard_clock_top_margin">34dp</dimen>
-
+    <dimen name="keyguard_clock_top_margin">72dp</dimen>
     <!-- Lock screen status view bottom margin -->
-    <dimen name="keyguard_status_view_bottom_margin">28dp</dimen>
+    <dimen name="keyguard_status_view_bottom_margin">34dp</dimen>
+
+    <!-- Lock screen shortcut icons - bigger, moved diagonally inward -->
+    <dimen name="keyguard_affordance_fixed_height">56dp</dimen>
+    <dimen name="keyguard_affordance_fixed_width">56dp</dimen>
+    <dimen name="keyguard_affordance_fixed_radius">28dp</dimen>
+    <dimen name="keyguard_affordance_horizontal_offset">28dp</dimen>
+    <dimen name="keyguard_affordance_vertical_offset">44dp</dimen>
+    <dimen name="keyguard_indication_area_padding">92dp</dimen>
+
+    <!-- Disable QS media player squiggly seekbar animation -->
+    <dimen name="qs_media_seekbar_progress_amplitude">0dp</dimen>
+
+    <!-- QS tile spacing -->
+    <dimen name="qs_tile_margin_horizontal">16dp</dimen>
+    <dimen name="qs_tile_margin_vertical">14dp</dimen>
+
+    <!-- QS panel corner radius -->
+    <dimen name="qs_corner_radius">24dp</dimen>
+
+    <!-- Notification/QS side padding (cascades to QS margins too) -->
+    <dimen name="notification_side_paddings">18dp</dimen>
+
+    <!-- Volume dialog position - move higher up screen -->
+    <dimen name="volume_dialog_background_top_margin">5dp</dimen>
+
+    <!-- WiFi/Bluetooth quick panel spacing -->
+    <dimen name="internet_dialog_network_layout_margin">20dp</dimen>
+    <dimen name="bluetooth_dialog_layout_margin">20dp</dimen>
 </resources>
