@@ -1362,9 +1362,13 @@ vendor/etc/init/vendor.qti.tftp.rc
 
 # Thermal
 vendor/bin/hw/vendor.qti.hardware.limits@1.0-service
+vendor/bin/hw/android.hardware.thermal@2.0-service.qti
 vendor/bin/thermal-engine
 vendor/etc/init/init_thermal-engine.rc
 vendor/etc/init/vendor.qti.hardware.limits@1.0-service.rc
+vendor/etc/init/android.hardware.thermal@2.0-service.qti.rc
+vendor/etc/vintf/manifest/vendor.qti.hardware.limits@1.0-service.xml
+vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.qti.xml
 vendor/etc/thermal-engine.conf
 vendor/etc/thermal.benchmark.conf
 vendor/etc/thermal.high.conf
@@ -1383,10 +1387,25 @@ vendor/etc/thermal.mid.level3.conf
 vendor/etc/thermal.mid.level4.conf
 vendor/etc/thermal.sgame.conf
 vendor/etc/thermal.super.conf
-vendor/etc/vintf/manifest/vendor.qti.hardware.limits@1.0-service.xml
+vendor/etc/advance_thermal_mitigation/atmc.json
 vendor/lib/libthermalclient.so
 vendor/lib64/libthermalclient.so
 vendor/lib64/vendor.qti.hardware.limits@1.0.so;MODULE_SUFFIX=_vendor
+
+# IRQ Balance
+vendor/bin/msm_irqbalance
+vendor/etc/msm_irqbalance.conf
+
+# Media Codec Performance Profiles
+vendor/etc/media_codecs_performance.xml
+vendor/etc/media_codecs_performance_lahaina.xml
+vendor/etc/media_codecs_performance_lahaina_vendor.xml
+vendor/etc/media_codecs_performance_shima_v1.xml
+vendor/etc/media_codecs_performance_shima_v2.xml
+vendor/etc/media_codecs_performance_shima_v3.xml
+vendor/etc/media_codecs_performance_yupik_v0.xml
+vendor/etc/media_codecs_performance_yupik_v1.xml
+vendor/etc/media_codecs_performance_yupik_iot.xml
 
 # Time Services
 vendor/app/TimeService/TimeService.apk
@@ -1488,46 +1507,6 @@ vendor/lib64/libwfddisplayconfig_proprietary.so
 vendor/lib64/libwfdhdcpcp.so
 vendor/lib64/vendor.qti.hardware.sigma_miracast@1.0.so
 vendor/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so;MODULE_SUFFIX=_vendor
-
-# Thermal
-vendor/bin/thermal-engine
-vendor/bin/hw/android.hardware.thermal@2.0-service.qti
-vendor/etc/init/init_thermal-engine.rc
-vendor/etc/init/android.hardware.thermal@2.0-service.qti.rc
-vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.qti.xml
-vendor/etc/thermal.benchmark.conf
-vendor/etc/thermal.high.conf
-vendor/etc/thermal.high.level1.conf
-vendor/etc/thermal.high.level2.conf
-vendor/etc/thermal.high.level3.conf
-vendor/etc/thermal.high.level4.conf
-vendor/etc/thermal.high.perf.conf
-vendor/etc/thermal.low.conf
-vendor/etc/thermal.low.level1.conf
-vendor/etc/thermal.low.level2.conf
-vendor/etc/thermal.mid.conf
-vendor/etc/thermal.mid.level1.conf
-vendor/etc/thermal.mid.level2.conf
-vendor/etc/thermal.mid.level3.conf
-vendor/etc/thermal.mid.level4.conf
-vendor/etc/thermal.sgame.conf
-vendor/etc/thermal.super.conf
-vendor/etc/advance_thermal_mitigation/atmc.json
-
-# IRQ Balance
-vendor/bin/msm_irqbalance
-vendor/etc/msm_irqbalance.conf
-
-# Media Codec Performance Profiles
-vendor/etc/media_codecs_performance.xml
-vendor/etc/media_codecs_performance_lahaina.xml
-vendor/etc/media_codecs_performance_lahaina_vendor.xml
-vendor/etc/media_codecs_performance_shima_v1.xml
-vendor/etc/media_codecs_performance_shima_v2.xml
-vendor/etc/media_codecs_performance_shima_v3.xml
-vendor/etc/media_codecs_performance_yupik_v0.xml
-vendor/etc/media_codecs_performance_yupik_v1.xml
-vendor/etc/media_codecs_performance_yupik_iot.xml
 
 # GPS
 vendor/etc/gps.conf
