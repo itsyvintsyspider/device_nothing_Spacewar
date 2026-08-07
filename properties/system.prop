@@ -13,6 +13,7 @@ persist.vendor.btstack.enable.gatt_robust_caching=false
 
 # Camera
 camera.disable_zsl_mode=true
+vendor.camera.aux.packagelist=com.google.android.GoogleCameraEng,com.google.android.GoogleCamera,org.lineageos.aperture
 
 # CNE
 persist.vendor.cne.feature=1
