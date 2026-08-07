@@ -117,6 +117,8 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.3-service.phone1 \
     android.hardware.biometrics.fingerprint@2.3.vendor
 
+$(call soong_config_set,surfaceflinger,udfps_lib,//hardware/nothing:libudfps_extension.nothing)
+
 TARGET_USES_FOD_ZPOS := true
 
 # FM
@@ -133,6 +135,13 @@ PRODUCT_PACKAGES += \
 
 # Generic Kernel Headers
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
+
+# GNSS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0.vendor \
+    android.hardware.gnss@1.1.vendor \
+    android.hardware.gnss@2.0.vendor \
+    android.hardware.gnss@2.1.vendor
 
 # HIDL
 PRODUCT_PACKAGES += \
