@@ -20,6 +20,11 @@
     <dimen name="keyguard_indication_margin_bottom">15dp</dimen>
 
     <!-- Location on the screen of the center of the physical power button. -->
-    <dimen name="physical_power_button_center_screen_location_y">989.0px</dimen>
+    <dimen name="physical_power_button_center_screen_location_y">990px</dimen>
 
+    <!-- Point your ROM's UDFPS Lottie config to your raw JSONs -->
+    <string name="config_udfpsIcon" translatable="false">udfps_lockscreen_fp</string>
+
+    <!-- Optional: If your ROM source supports a separate AOD FP animation -->
+    <string name="config_udfpsAodIcon" translatable="false">udfps_aod_fp</string>
 </resources>
