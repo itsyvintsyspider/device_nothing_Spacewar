@@ -237,11 +237,13 @@ PRODUCT_BOOT_JARS += \
 
 # Overlays
 PRODUCT_PACKAGES += \
+    Phone1Aperture \
     Phone1CarrierConfig \
     Phone1Frameworks \
     Phone1FrameworksAOSPA \
     Phone1Nfc \
     Phone1Settings \
+    Phone1SettingsProvider \
     Phone1SystemUI \
     Phone1SystemUIAOSPA \
     aptxalsOverlay
