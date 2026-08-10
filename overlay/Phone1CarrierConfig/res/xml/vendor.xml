@@ -43,8 +43,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         </carrier_config>-->
   <carrier_config>
     <boolean name="apn_expand_bool" value="true"/>
-    <!-- AOSPA Edit: Disable World Mode to clean up network modes -->
-    <boolean name="world_phone_bool" value="false"/>
     <boolean name="allow_adding_apns_bool" value="true"/>
     <boolean name="hide_preferred_network_type_bool" value="false"/>
     <!-- AOSPA Edit: Disable CDMA Choices to clean up settings -->

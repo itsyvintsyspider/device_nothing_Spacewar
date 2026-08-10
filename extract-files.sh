@@ -72,6 +72,10 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             sed -i "s/ro.boot.flash.locked/vendor.goodix.locked/g" "${2}"
             ;;
+        vendor/lib64/camera/components/com.vidhance.node.processing.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --replace-needed "libui.so" "libui-v34.so" "${2}"
+            ;;
         vendor/lib64/mediadrm/libwvdrmengine.so|vendor/lib64/libwvhidl.so)
             [ "$2" = "" ] && return 0
             grep -q "libcrypto_shim.so" "${2}" || "${PATCHELF}" --add-needed "libcrypto_shim.so" "${2}"
