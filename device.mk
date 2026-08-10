@@ -2,6 +2,10 @@ DEVICE_PATH := device/nothing/phone1
 
 TARGET_FWK_SUPPORTS_FULL_VALUEADDS := true
 
+# Use custom release keys instead of standard AOSP test keys
+PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/keys/releasekey
+PRODUCT_OTA_PUBLIC_KEYS := vendor/extra/keys/releasekey.x509.pem
+
 # Properties
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/properties/system.prop
 TARGET_VENDOR_PROP := $(DEVICE_PATH)/properties/vendor.prop

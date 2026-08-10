@@ -521,6 +521,9 @@ vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/libaidenoiser.so
 vendor/lib64/libaidenoiserv2.so
+vendor/lib64/libjni_aidenoiserutil.so
+vendor/lib64/libjni_aidenoiserutilv2.so
+vendor/lib64/libjni_mfnrutil.so
 vendor/lib64/libarcsoft_aiscenedetection.so
 vendor/lib64/libarcsoft_beautyshot.so
 vendor/lib64/libarcsoft_dark_vision_raw.so
