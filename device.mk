@@ -2,9 +2,19 @@ DEVICE_PATH := device/nothing/phone1
 
 TARGET_FWK_SUPPORTS_FULL_VALUEADDS := true
 
-# Use custom release keys instead of standard AOSP test keys
+# Use custom release keys & allow standard AOSP test keys for recovery/AnyKernel zips
 PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/keys/releasekey
-PRODUCT_OTA_PUBLIC_KEYS := vendor/extra/keys/releasekey.x509.pem
+PRODUCT_OTA_PUBLIC_KEYS := \
+    vendor/extra/keys/releasekey.x509.pem \
+    build/target/product/security/testkey.x509.pem
+
+# OEM Unlocking, FRP, and Release Tag Properties
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.oem_unlocking.supported=1 \
+    ro.frp.pst=/dev/block/bootdevice/by-name/frp \
+    ro.build.tags=release-keys \
+    ro.oem_unlock_supported=1 \
+    persist.sys.fuse.passthrough.enable=true
 
 # Properties
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/properties/system.prop
@@ -30,13 +40,13 @@ PRODUCT_PACKAGES += \
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
+    FILESYSTEM_TYPE_system=erofs \
     POSTINSTALL_OPTIONAL_system=true
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=ext4 \
+    FILESYSTEM_TYPE_vendor=erofs \
     POSTINSTALL_OPTIONAL_vendor=true
 
 # API
@@ -64,7 +74,7 @@ PRODUCT_PACKAGES += \
     libldnhncr \
     libreverbwrapper \
     libvisualizer
-# Audio
+
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml \
     $(DEVICE_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_yupik/audio_policy_configuration.xml \
@@ -74,7 +84,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_yupik/audio_effects.xml \
     $(DEVICE_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(DEVICE_PATH)/configs/audio/audio_platform_info_yupikqrd.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_yupik/audio_platform_info_yupikqrd.xml \
-    $(DEVICE_PATH)/configs/audio/audio_platform_info_qrd.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_qrd.xml \
+    $(DEVICE_PATH)/configs/audio/audio_platform_info_qrd.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_qrd.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_volumes.xml \
@@ -157,10 +167,6 @@ TARGET_USES_FOD_ZPOS := true
 # FM
 BOARD_HAVE_QCOM_FM := false
 
-# FUSE Passthrough
-PRODUCT_VENDOR_PROPERTIES += \
-    persist.sys.fuse.passthrough.enable=true
-
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0 \
@@ -228,7 +234,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
-    frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml
 
 PRODUCT_PACKAGES += \
     libbase_shim

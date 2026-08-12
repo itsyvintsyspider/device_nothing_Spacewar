@@ -484,4 +484,10 @@
 
     <!-- Whether to enable fp unlock when screen turns off on udfps devices -->
     <bool name="config_screen_off_udfps_enabled">true</bool>
+
+    <!-- Forces SystemServer to instantiate OemLockService -->
+    <bool name="config_oemUnlockSupported">true</bool>
+
+    <!-- Allows OEM unlock toggle without requiring carrier server authorization -->
+    <bool name="config_oem_unlock_allowed_by_carrier">true</bool>
 </resources>
