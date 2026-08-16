@@ -259,6 +259,11 @@ PRODUCT_PACKAGES += \
     Phone1SystemUIAOSPA \
     aptxalsOverlay
 
+# Paranoid Glyphs
+PRODUCT_PACKAGES += \
+    ParanoidGlyphPhone1 \
+    GlyphAdapter
+
 # Partitions - Dynamic
 PRODUCT_BUILD_ODM_IMAGE := true
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
