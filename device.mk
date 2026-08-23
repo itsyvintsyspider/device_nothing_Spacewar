@@ -12,7 +12,6 @@ PRODUCT_OTA_PUBLIC_KEYS := \
 PRODUCT_VENDOR_PROPERTIES += \
     ro.oem_unlocking.supported=1 \
     ro.frp.pst=/dev/block/bootdevice/by-name/frp \
-    ro.build.tags=release-keys \
     ro.oem_unlock_supported=1 \
     persist.sys.fuse.passthrough.enable=true
 
@@ -246,6 +245,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     nothing-fwk
 
+# Nothing Extras
+PRODUCT_PACKAGES += \
+    DeviceExtras
+
 # Overlays
 PRODUCT_PACKAGES += \
     Phone1Aperture \
@@ -261,7 +264,7 @@ PRODUCT_PACKAGES += \
 
 # Paranoid Glyphs
 PRODUCT_PACKAGES += \
-    ParanoidGlyphPhone1 \
+    GlyphManager \
     GlyphAdapter
 
 # Partitions - Dynamic
