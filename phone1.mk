@@ -36,6 +36,9 @@ PRODUCT_MANUFACTURER := Nothing
 PRODUCT_MODEL := A063
 PRODUCT_NAME := phone1
 
+# Declare updates support
+IS_OFFICIAL := true
+
 PRODUCT_GMS_CLIENTID_BASE := android-nothing
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
