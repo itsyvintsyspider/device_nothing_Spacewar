@@ -159,8 +159,8 @@ on early-boot
 
 on boot
     write /dev/cpuset/audio-app/cpus 1-2
-    # I/O scheduler set to Kyber
-    write /sys/block/sda/queue/scheduler kyber
+    # I/O scheduler set to BFQ
+    write /sys/block/sda/queue/scheduler bfq
     # Add a cpuset for the camera daemon
     # We want all cores for camera
     mkdir /dev/cpuset/camera-daemon
