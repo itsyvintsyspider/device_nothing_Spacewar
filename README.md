@@ -44,8 +44,6 @@ Device tree for the **Nothing Phone (1)** (codename `spacewar`), built for [Neot
 ## Known issues / in progress
 
 - **PowerShare (wireless reverse charging)** — service package (`vendor.aospa.powershare-service`) and kernel driver are present, but no Settings UI entry currently surfaces the toggle. Under investigation.
-- **KernelSU** — not currently included; see kernel README for details on the reproducible freeze that led to this.
-- **TEE / Play Integrity** — broken, suspected revoked keybox. No RKP available on this hardware generation (pre-Android 13 launch, no factory RKP provisioning) — any fix path runs through keybox + TrickyStore, not RKP.
 
 ## Building
 
