@@ -279,7 +279,7 @@ PRODUCT_COPY_FILES += $(DEVICE_PATH)/init/fstab.default:$(TARGET_COPY_OUT_VENDOR
 
 # Powershare
 PRODUCT_PACKAGES += \
-    vendor.aospa.powershare-service
+    vendor.lineage.powershare-service
 
 # QTI Components
 TARGET_COMMON_QTI_COMPONENTS := \
