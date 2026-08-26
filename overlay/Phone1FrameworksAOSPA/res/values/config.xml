@@ -19,9 +19,6 @@
     <!-- Fingerprint from stock ROM -->
     <string name="config_stockFingerprint" translatable="false">Nothing/Spacewar/Spacewar:15/AQ3A.240929.001/2606181045:user/release-keys</string>
 
-    <!-- Whether to use Richtap vibration -->
-    <bool name="config_usesRichtapVibration">true</bool>
-
     <!-- Display color inversion availability -->
     <bool name="config_displayInversionAvailable">false</bool>
 
