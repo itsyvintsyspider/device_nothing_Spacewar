@@ -915,10 +915,6 @@ vendor/lib64/vendor.qti.ims.rcsuce@1.2.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.imsrtpservice@3.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.imsrtpservice@3.0-service-Impl.so
 
-# Kernel
-vendor/bin/vendor_modprobe.sh
-vendor/lib/modules/modules.blocklist:vendor_dlkm/lib/modules/modules.blocklist
-
 # Keymaster / Widevine
 vendor/bin/hw/android.hardware.authsecret@1.0-service-qti
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
