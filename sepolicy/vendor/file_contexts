@@ -41,7 +41,7 @@
 /(vendor|system/vendor)/bin/hw/android.hardware.sensors@[0-9].[0-9]-service.phone1-multihal       u:object_r:hal_sensors_default_exec:s0
 
 # Vibrator
-/(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.richtap\.vibrator-service\.aac              u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator\.service\.spacewar              u:object_r:hal_vibrator_default_exec:s0
 /sys/class/qcom-battery(/.*)?    u:object_r:vendor_sysfs_battery_supply:s0
 
 # Thermal
