@@ -60,6 +60,9 @@ public:
     int on(int32_t timeoutMs);
     int off();
     bool mDetected;
+    int32_t mTimeoutMs;
+    int32_t mLevel;
+    int setAmplitude(float amplitude);
     int write_value(const char *file, const char *value);
     int write_value(const char *file, int value);
 };
