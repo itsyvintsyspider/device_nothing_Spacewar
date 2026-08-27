@@ -34,7 +34,6 @@ vendor/lib64/vendor.qti.hardware.dsp@1.0.so
 # Audio
 system/etc/sysconfig/preinstalled-packages-audioeffect.xml
 system/priv-app/NothingAudioEffectService/NothingAudioEffectService.apk
-system/priv-app/NothingX/NothingX.apk
 system_ext/etc/hdr_config/ans_off/ans_config.txt
 system_ext/etc/hdr_config/ans_on/ans_config.txt
 system_ext/etc/hdr_config/main_inv_ls/RPP_BiquadHPF_config.txt
