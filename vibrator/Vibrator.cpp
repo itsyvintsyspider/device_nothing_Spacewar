@@ -8,8 +8,8 @@
 
 #include "aac_vibra_function.h"
 
-#define RICHTAP_LIGHT_STRENGTH 120
-#define RICHTAP_MEDIUM_STRENGTH 175
+#define RICHTAP_LIGHT_STRENGTH 140
+#define RICHTAP_MEDIUM_STRENGTH 190
 #define RICHTAP_STRONG_STRENGTH 255
 
 enum vibrationMode {
@@ -37,7 +37,7 @@ Vibrator::Vibrator() {
 
     aac_vibra_looper_start();
 
-    aac_vibra_setAmplitude(0xFF);
+    aac_vibra_setAmplitude(0xB4);
 
     ALOGI("AAC init success: %u\n", deviceType);
 }
@@ -85,11 +85,11 @@ std::optional<uint32_t> mapEffectToPrebakedId(Effect effect) {
         case Effect::DOUBLE_CLICK:
             return 0x1001;
         case Effect::TICK:
-            return 0x3001;
+            return 0x3003;
         case Effect::THUD:
-            return 0x3002;
+            return 0x3003;
         case Effect::POP:
-            return 0x3000;
+            return 0x3003;
         case Effect::HEAVY_CLICK:
             return 0x3007;
 
