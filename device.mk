@@ -294,7 +294,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     init \
     media \
     overlay \
-    perf \
     telephony \
     usb \
     wfd \
@@ -354,6 +353,13 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
+
+# Power HAL (power-libperfmgr)
+PRODUCT_PACKAGES += \
+    android.hardware.power-service.spacewar-libperfmgr
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/perf/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Proprietary Vendor
 $(call inherit-product, vendor/nothing/phone1/phone1-vendor.mk)

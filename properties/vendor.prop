@@ -80,3 +80,6 @@ ro.soc.manufacturer=QTI
 
 # SPU
 vendor.gatekeeper.disable_spu=true
+
+# Perf
+ro.vendor.extension_library?=

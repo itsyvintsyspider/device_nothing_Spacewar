@@ -8,3 +8,6 @@ vendor.goodix.locked                                                            
 persist.vendor.overlay.fp_model                                                                   u:object_r:vendor_fingerprint_prop:s0
 persist.vendor.overlay.fp_serial                                                                  u:object_r:vendor_fingerprint_prop:s0
 persist.vendor.overlay.fp_vendor                                                                  u:object_r:vendor_fingerprint_prop:s0
+
+# Power
+vendor.powerhal.                                                                                  u:object_r:vendor_power_prop:s0
