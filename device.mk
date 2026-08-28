@@ -26,9 +26,8 @@ TARGET_SYSTEM_EXT_PROP := $(DEVICE_PATH)/properties/system_ext.prop
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl-qti \
-    android.hardware.boot@1.2-impl-qti.recovery \
-    android.hardware.boot@1.2-service \
+    android.hardware.boot-service.qti \
+    android.hardware.boot-service.qti.recovery \
     checkpoint_gc \
     otapreopt_script \
     update_engine \
@@ -272,7 +271,7 @@ PRODUCT_BUILD_ODM_IMAGE := true
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
+    android.hardware.fastboot-service.example_recovery \
     fastbootd
 
 PRODUCT_COPY_FILES += $(DEVICE_PATH)/init/fstab.default:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.default
@@ -330,7 +329,7 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.qti
+    android.hardware.thermal-service.qti
 
 # Treble
 PRODUCT_FULL_TREBLE_OVERRIDE := true
