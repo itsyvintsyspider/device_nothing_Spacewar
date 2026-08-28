@@ -196,6 +196,7 @@ PRODUCT_PACKAGES += \
 
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
+OVERRIDE_ENABLE_UFFD_GC := true
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
 # Keymaster
@@ -210,6 +211,10 @@ DEVICE_MANIFEST_FILE += \
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     $(DEVICE_PATH)/configs/vintf/phone1_vendor_framework_compatibility_matrix.xml
+
+# Memtrack
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.memtrack-service
 
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
