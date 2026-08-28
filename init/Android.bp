@@ -25,8 +25,8 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.phone1.display.rc",
-    src: "init.phone1.display.rc",
+    name: "init.Spacewar.display.rc",
+    src: "init.Spacewar.display.rc",
     sub_dir: "init",
     vendor: true,
 }
@@ -52,8 +52,8 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "ueventd.nothing.rc",
+    name: "ueventd.Spacewar.rc",
     filename: "ueventd.rc",
-    src: "ueventd.nothing.rc",
+    src: "ueventd.Spacewar.rc",
     device_specific: true,
 }

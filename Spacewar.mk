@@ -17,7 +17,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # Inherit from the custom device configuration.
-$(call inherit-product, device/nothing/phone1/device.mk)
+$(call inherit-product, device/nothing/Spacewar/device.mk)
 
 # Inherit from the Neoteric configuration.
 $(call inherit-product, vendor/neoteric/target/product/neoteric-target.mk)
@@ -31,10 +31,10 @@ $(call soong_config_set,qtiaudio,feature_sound_trigger,true)
 $(call soong_config_set,qtiaudio,feature_ext_amplifier,false)
 
 PRODUCT_BRAND := Nothing
-PRODUCT_DEVICE := phone1
+PRODUCT_DEVICE := Spacewar
 PRODUCT_MANUFACTURER := Nothing
 PRODUCT_MODEL := A063
-PRODUCT_NAME := phone1
+PRODUCT_NAME := Spacewar
 
 # Declare updates support
 IS_OFFICIAL := true

@@ -1,4 +1,4 @@
-DEVICE_PATH := device/nothing/phone1
+DEVICE_PATH := device/nothing/Spacewar
 
 TARGET_FWK_SUPPORTS_FULL_VALUEADDS := true
 
@@ -155,7 +155,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.3-service.phone1 \
+    android.hardware.biometrics.fingerprint@2.3-service.Spacewar \
     android.hardware.biometrics.fingerprint@2.3.vendor
 
 $(call soong_config_set,surfaceflinger,udfps_lib,//hardware/nothing:libudfps_extension.nothing)
@@ -188,11 +188,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_fw_fstab.qti \
     fstab.default \
-    init.phone1.display.rc \
+    init.Spacewar.display.rc \
     init.qti.media.rc \
     init.qti.media.sh \
     init.target.rc \
-    ueventd.nothing.rc
+    ueventd.Spacewar.rc
 
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
@@ -207,10 +207,10 @@ PRODUCT_PACKAGES += \
 # Manifests
 DEVICE_MANIFEST_FILE += \
     $(DEVICE_PATH)/configs/vintf/manifest_yupik.xml \
-    $(DEVICE_PATH)/configs/vintf/manifest_phone1.xml
+    $(DEVICE_PATH)/configs/vintf/manifest_Spacewar.xml
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
-    $(DEVICE_PATH)/configs/vintf/phone1_vendor_framework_compatibility_matrix.xml
+    $(DEVICE_PATH)/configs/vintf/Spacewar_vendor_framework_compatibility_matrix.xml
 
 # Memtrack
 PRODUCT_PACKAGES += \
@@ -255,15 +255,15 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    Phone1Aperture \
-    Phone1CarrierConfig \
-    Phone1Frameworks \
-    Phone1FrameworksAOSPA \
-    Phone1Nfc \
-    Phone1Settings \
-    Phone1SettingsProvider \
-    Phone1SystemUI \
-    Phone1SystemUIAOSPA \
+    SpacewarAperture \
+    SpacewarCarrierConfig \
+    SpacewarFrameworks \
+    SpacewarFrameworksAOSPA \
+    SpacewarNfc \
+    SpacewarSettings \
+    SpacewarSettingsProvider \
+    SpacewarSystemUI \
+    SpacewarSystemUIAOSPA \
     aptxalsOverlay
 
 # Paranoid Glyphs
@@ -306,10 +306,10 @@ TARGET_COMMON_QTI_COMPONENTS := \
 
 # Copy Nothing OS Audio Files to Product Partition
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*.ogg,device/nothing/phone1/media/audio/alarms,$(TARGET_COPY_OUT_PRODUCT)/media/audio/alarms) \
-    $(call find-copy-subdir-files,*.ogg,device/nothing/phone1/media/audio/notifications,$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications) \
-    $(call find-copy-subdir-files,*.ogg,device/nothing/phone1/media/audio/ringtones,$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones) \
-    $(call find-copy-subdir-files,*.ogg,device/nothing/phone1/media/audio/ui,$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui)
+    $(call find-copy-subdir-files,*.ogg,device/nothing/Spacewar/media/audio/alarms,$(TARGET_COPY_OUT_PRODUCT)/media/audio/alarms) \
+    $(call find-copy-subdir-files,*.ogg,device/nothing/Spacewar/media/audio/notifications,$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications) \
+    $(call find-copy-subdir-files,*.ogg,device/nothing/Spacewar/media/audio/ringtones,$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones) \
+    $(call find-copy-subdir-files,*.ogg,device/nothing/Spacewar/media/audio/ui,$(TARGET_COPY_OUT_PRODUCT)/media/audio/ui)
 
 # Sensors
 PRODUCT_COPY_FILES += \
@@ -324,7 +324,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@2.1-service.phone1-multihal \
+    android.hardware.sensors@2.1-service.Spacewar-multihal \
     android.hardware.sensors@2.0-ScopedWakelock \
     libsensorndkbridge \
     sensors.nothing
@@ -360,5 +360,5 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
 # Proprietary Vendor
-$(call inherit-product, vendor/nothing/phone1/phone1-vendor.mk)
+$(call inherit-product, vendor/nothing/Spacewar/Spacewar-vendor.mk)
 $(call inherit-product-if-exists, vendor/nothing/camera/nothing-camera.mk)

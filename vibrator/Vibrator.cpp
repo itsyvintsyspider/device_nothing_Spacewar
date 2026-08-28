@@ -8,9 +8,9 @@
 
 #include "aac_vibra_function.h"
 
-#define RICHTAP_LIGHT_STRENGTH 125
-#define RICHTAP_MEDIUM_STRENGTH 170
-#define RICHTAP_STRONG_STRENGTH 230
+#define RICHTAP_LIGHT_STRENGTH 185
+#define RICHTAP_MEDIUM_STRENGTH 210
+#define RICHTAP_STRONG_STRENGTH 255
 
 enum vibrationMode {
     MODE_NONE,
@@ -81,17 +81,17 @@ ndk::ScopedAStatus Vibrator::on(int32_t timeoutMs,
 std::optional<uint32_t> mapEffectToPrebakedId(Effect effect) {
     switch (effect) {
         case Effect::CLICK:
-            return 0x3008;
+            return 0x3009;
         case Effect::DOUBLE_CLICK:
-            return 0x1001;
+            return 0x3007;
         case Effect::TICK:
             return 0x3003;
         case Effect::THUD:
-            return 0x3003;
+            return 0x3008;
         case Effect::POP:
-            return 0x3003;
-        case Effect::HEAVY_CLICK:
             return 0x3007;
+        case Effect::HEAVY_CLICK:
+            return 0x3006;
 
         default:
             return static_cast<uint32_t>(effect) + 0x1000;

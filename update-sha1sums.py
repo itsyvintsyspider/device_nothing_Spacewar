@@ -21,7 +21,7 @@ import os
 import sys
 from hashlib import sha1
 
-device='phone1'
+device='Spacewar'
 vendor='nothing'
 
 with open('proprietary-files.txt', 'r') as f:

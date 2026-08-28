@@ -1,4 +1,4 @@
 runtime_resource_overlay {
-    name: "Phone1Aperture",
+    name: "SpacewarSettingsProvider",
     device_specific: true,
 }

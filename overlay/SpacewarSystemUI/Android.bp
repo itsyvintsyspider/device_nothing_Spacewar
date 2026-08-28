@@ -13,6 +13,6 @@
 // limitations under the License.
 
 runtime_resource_overlay {
-    name: "Phone1SystemUI",
+    name: "SpacewarSystemUI",
     device_specific: true,
 }
