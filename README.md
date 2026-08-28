@@ -1,4 +1,4 @@
-# device_nothing_phone1
+# device_nothing_Spacewar
 
 Device tree for the **Nothing Phone (1)** (codename `spacewar`), built for [Neoteric OS](https://github.com/Neoteric-OS) — a CLO/AOSP-based Android 16 custom ROM.
 
@@ -25,31 +25,19 @@ Device tree for the **Nothing Phone (1)** (codename `spacewar`), built for [Neot
 
 | | |
 |---|---|
-| Product name | `phone1` |
-| Lunch target | `phone1-userdebug` |
+| Product name | `Spacewar` |
+| Lunch target | `Spacewar-userdebug` |
 | ROM base | Neoteric OS (`bka` branch, Android 16 / "Baklava") |
 | Kernel | [android_kernel_nothing_sm7325](https://github.com/itsyvintsyspider/android_kernel_nothing_sm7325) — see kernel README for details |
-| Vendor tree | [proprietary_vendor_nothing_phone1](https://github.com/itsyvintsyspider/proprietary_vendor_nothing_phone1) |
+| Vendor tree | [proprietary_vendor_nothing_Spacewar](https://github.com/itsyvintsyspider/proprietary_vendor_nothing_Spacewar) |
 | Hardware tree | [android_hardware_nothing](https://github.com/itsyvintsyspider/android_hardware_nothing) |
 | Stock blob source | Nothing OS `Spacewar-V3.2-260618` (final EOL build) |
-
-## Highlights
-
-- **BORE-scheduled, EROFS-compressed kernel** — see kernel README.
-- **Glyph Interface via NGlyphs** — [NGlyphs](https://github.com/ang3lo-azevedo/android_hardware_nothing) + matching `GlyphAdapter`, sourced from [ang3lo-azevedo](https://github.com/ang3lo-azevedo)'s tree, replacing ParanoidGlyph. Audio-glyph sync, ringtone visualizer, essential lights, recording indicator LED, sleep mode, style selection — built as a system app, no root dependency.
-- **Full GNSS** — complete HIDL 2.1 blob set, XTRA/`xtra-daemon` corrected.
-- **Working fingerprint (UDFPS)**, Nothing Camera (Night Mode broken atm), Dolby Atmos, torch strength control, per-app haptics tuning.
-- **AVB / release-key signing** — proper verified boot chain, not stock's disabled-verification test keys.
-
-## Known issues / in progress
-
-- **PowerShare (wireless reverse charging)** — service package (`vendor.aospa.powershare-service`) and kernel driver are present, but no Settings UI entry currently surfaces the toggle. Under investigation.
 
 ## Building
 
 ```bash
 source build/envsetup.sh
-lunch phone1-userdebug
+lunch Spacewar-userdebug
 m updatepackage
 ```
 
