@@ -124,10 +124,12 @@ $(call soong_config_set,libcameraservice,ext_lib,//$(LOCAL_PATH):libcameraservic
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
 
-# Display
+# Display & Namespaces
 PRODUCT_SOONG_NAMESPACES += \
+    hardware/qcom-caf/sm8350 \
     hardware/qcom-caf/sm8350/display \
-    hardware/nothing
+    hardware/nothing \
+    $(DEVICE_PATH)
 
 PRODUCT_PACKAGES += \
     libqdMetaData \
