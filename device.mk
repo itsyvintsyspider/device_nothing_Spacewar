@@ -167,10 +167,9 @@ TARGET_USES_FOD_ZPOS := true
 # FM
 BOARD_HAVE_QCOM_FM := false
 
-# Gatekeeper
+# Gatekeeper (software, non-secure -- hardware-backed QSEECOM TA loading broken on cnb)
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0 \
-    android.hardware.gatekeeper@1.0.vendor
+    android.hardware.gatekeeper-service.nonsecure
 
 # Generic Kernel Headers
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
@@ -209,10 +208,9 @@ PRODUCT_ENABLE_UFFD_GC := true
 OVERRIDE_ENABLE_UFFD_GC := true
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
-# Keymaster
+# Keymaster (software -- hardware-backed QSEECOM TA loading broken on cnb)
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.1 \
-    android.hardware.keymaster@4.1.vendor
+    android.hardware.keymaster@4.1-service
 
 # Manifests
 DEVICE_MANIFEST_FILE += \
@@ -278,7 +276,7 @@ PRODUCT_PACKAGES += \
 
 # Paranoid Glyphs
 PRODUCT_PACKAGES += \
-    GlyphManager \
+    ParanoidGlyphPhone1 \
     GlyphAdapter
 
 # Partitions - Dynamic
