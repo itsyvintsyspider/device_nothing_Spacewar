@@ -3,10 +3,19 @@ DEVICE_PATH := device/nothing/Spacewar
 TARGET_FWK_SUPPORTS_FULL_VALUEADDS := true
 
 # Use custom release keys & allow standard AOSP test keys for recovery/AnyKernel zips
-PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/keys/releasekey
-PRODUCT_OTA_PUBLIC_KEYS := \
-    vendor/extra/keys/releasekey.x509.pem \
-    build/target/product/security/testkey.x509.pem
+# For development builds, you can switch between test and release keys
+ifneq ($(TARGET_BUILD_VARIANT),user)
+    # Use test keys for eng/userdebug builds
+    PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/keys/releasekey
+    PRODUCT_OTA_PUBLIC_KEYS := \
+        vendor/extra/keys/releasekey.x509.pem \
+        build/target/product/security/testkey.x509.pem
+else
+    # Use release keys for production builds
+    PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/extra/keys/releasekey
+    PRODUCT_OTA_PUBLIC_KEYS := \
+        vendor/extra/keys/releasekey.x509.pem
+endif
 
 # OEM Unlocking, FRP, and Release Tag Properties
 PRODUCT_VENDOR_PROPERTIES += \
@@ -229,7 +238,9 @@ PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2.vendor \
     android.hardware.nfc@1.0-impl:64 \
     NfcNci \
-    Tag
+    Tag \
+    vendor/extra/keys/releasekey.x509.pem
+
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
