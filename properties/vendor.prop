@@ -42,6 +42,9 @@ ro.surface_flinger.clear_slots_with_set_layer_buffer=false
 # DRM
 drm.service.enabled=true
 
+# eBPF
+ro.bpf.kver_override=5.10.239
+
 # Fingerprint
 vendor.goodix.locked=0
 ro.vendor.display.skip_fingerlayer_colormatrix=1

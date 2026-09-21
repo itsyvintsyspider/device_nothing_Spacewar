@@ -95,8 +95,29 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
 TARGET_KERNEL_SOURCE := kernel/nothing/sm7325
+# Neutron Clang (LLVM 24) for the target kernel image -- AOSP's own bundled
+# clang-r563880c pin was an Android 17-specific constraint, not applicable
+# here.
+TARGET_KERNEL_CLANG_PATH := /home/vintsy/Nothing/toolchains/neutron-clang
+# Neutron's own lld/compiler-rt (LLVM 24) corrupts .init_array when linked
+# against the old glibc-2.17 host sysroot used for kernel host-tool builds
+# (fixdep etc.) -- confirmed via real crash: SIGSEGV at rip=0x0 inside
+# __libc_csu_init, before main() runs. AOSP's own bundled clang-r547379
+# builds the exact same host tools cleanly against that same sysroot, so
+# pin host-tool builds to it specifically.
+TARGET_KERNEL_HOSTCC_PATH := /home/vintsy/Nothing/AndroidBuilds/Neoteric-bka/prebuilts/clang/host/linux-x86/clang-r547379
 TARGET_KERNEL_CONFIG := vendor/lahaina-qgki_defconfig vendor/debugfs.config vendor/spacewar.config
 TARGET_KERNEL_NO_GCC := true
+# This kernel predates scripts/Makefile.clang (added upstream in 5.10):
+# its top-level Makefile only derives --target=/--prefix=/--gcc-toolchain=
+# clang flags inside `ifneq ($(CROSS_COMPILE),)` (see arch/arm64/Makefile's
+# caller, top-level Makefile ~line 572). kernel.mk's KERNEL_CLANG_TRIPLE
+# default alone is a no-op here without a matching KERNEL_CROSS_COMPILE -
+# without it clang compiles kernel sources under its host (x86_64) default
+# target, which is why AArch64 register names (x0/x1/x2) in
+# arch/arm64/include/asm/atomic_lse.h were rejected as unknown.
+KERNEL_CROSS_COMPILE := CROSS_COMPILE=aarch64-linux-gnu-
+KERNEL_LTO := thin
 
 
 # OTA

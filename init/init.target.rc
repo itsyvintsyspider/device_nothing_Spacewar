@@ -159,6 +159,14 @@ on early-boot
     verity_update_state
 
 on boot
+    # NOX-DEBUG temporary bring-up aid: system/core/rootdir/init.rc's own
+    # `on init` sets panic_on_oops back to 1 before this runs, so overriding
+    # it there wouldn't stick -- `on boot` fires after every `on init` block
+    # across all rc files, giving this the last word. Lets a real Oops kill
+    # just the offending thread/process instead of panicking the whole
+    # device, so we can keep pulling live logs past a crash point instead of
+    # losing the session to an instant reboot. Revert once root-caused.
+    write /proc/sys/kernel/panic_on_oops 0
     write /dev/cpuset/audio-app/cpus 1-2
     # I/O scheduler set to BFQ
     write /sys/block/sda/queue/scheduler bfq

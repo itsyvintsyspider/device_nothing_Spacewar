@@ -279,7 +279,7 @@ PRODUCT_PACKAGES += \
 
 # Paranoid Glyphs
 PRODUCT_PACKAGES += \
-    Glyphs \
+    ParanoidGlyphPhone1 \
     GlyphAdapter
 
 # Partitions - Dynamic
