@@ -1498,9 +1498,31 @@ vendor/bin/time_daemon
 vendor/etc/init/init.time_daemon.rc
 vendor/lib64/libtime_genoff.so
 
-# Vibrator/RichTap
+# Vibrator
 odm/etc/aac_richtap.config
-vendor/lib64/libaacvibrator.so;DISABLE_CHECKELF
+vendor/etc/richtapresources/default/click.he
+vendor/etc/richtapresources/default/double_click.he
+vendor/etc/richtapresources/default/heavy_click.he
+vendor/etc/richtapresources/default/pop.he
+vendor/etc/richtapresources/default/texture_tick.he
+vendor/etc/richtapresources/default/thud.he
+vendor/etc/richtapresources/default/tick.he
+vendor/etc/richtapresources/strong/click.he
+vendor/etc/richtapresources/strong/double_click.he
+vendor/etc/richtapresources/strong/heavy_click.he
+vendor/etc/richtapresources/strong/pop.he
+vendor/etc/richtapresources/strong/texture_tick.he
+vendor/etc/richtapresources/strong/thud.he
+vendor/etc/richtapresources/strong/tick.he
+vendor/etc/richtapresources/weak/click.he
+vendor/etc/richtapresources/weak/double_click.he
+vendor/etc/richtapresources/weak/heavy_click.he
+vendor/etc/richtapresources/weak/pop.he
+vendor/etc/richtapresources/weak/texture_tick.he
+vendor/etc/richtapresources/weak/thud.he
+vendor/etc/richtapresources/weak/tick.he
+-vendor/lib64/libaacvibrator.so;DISABLE_CHECKELF
+vendor/lib64/vendor.aac.hardware.richtap.vibrator-V1-ndk_platform.so
 
 # VPP
 vendor/bin/vppservice
