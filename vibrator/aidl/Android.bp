@@ -1,0 +1,49 @@
+Common_CFlags = ["-Wall"]
+Common_CFlags += ["-Werror"]
+
+cc_library_shared {
+    name: "vendor.qti.hardware.vibrator.impl.spacewar",
+    vendor: true,
+    cflags: Common_CFlags,
+    srcs: [
+        "Vibrator.cpp",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libutils",
+        "liblog",
+        "libbinder_ndk",
+        "android.hardware.vibrator-V2-ndk",
+        "vendor.qti.hardware.vibratorOL.impl.spacewar",
+        "vendor.qti.hardware.vibratorSel.impl.spacewar",
+    ],
+    export_include_dirs: ["include"],
+    include_dirs: [
+        "external/expat/lib",
+    ],
+}
+
+cc_binary {
+    name: "vendor.qti.hardware.vibrator.service.spacewar",
+    vendor: true,
+    relative_install_path: "hw",
+    init_rc: ["vendor.qti.hardware.vibrator.service.spacewar.rc"],
+    vintf_fragments: [
+        "vendor.qti.hardware.vibrator.service.spacewar.xml",
+    ],
+    srcs: [
+        "service.cpp",
+        "richtap/RichtapVibrator.cpp",
+    ],
+    shared_libs: [
+        "libcutils",
+        "liblog",
+        "libutils",
+        "libbase",
+        "libbinder_ndk",
+        "android.hardware.vibrator-V2-ndk",
+        "vendor.qti.hardware.vibrator.impl.spacewar",
+        "vendor.aac.hardware.richtap.vibrator-ndk",
+        "libaacvibrator",
+    ],
+}

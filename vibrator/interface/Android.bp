@@ -1,0 +1,20 @@
+aidl_interface {
+    name: "vendor.aac.hardware.richtap.vibrator",
+    vendor_available: true,
+    unstable: true,
+    local_include_dir: ".",
+    srcs: [
+        "vendor/aac/hardware/richtap/vibrator/*.aidl",
+    ],
+    backend: {
+        ndk: {
+            enabled: true,
+        },
+        cpp: {
+            enabled: false,
+        },
+        java: {
+            enabled: false,
+        },
+    },
+}
