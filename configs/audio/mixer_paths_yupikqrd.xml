@@ -2356,8 +2356,10 @@
         <ctl name="ADC4 ChMap" value="SWRM_TX2_CH2"/>
         <ctl name="ADC4_MIXER Switch" value="1"/>
         <ctl name="ADC4 MUX" value="INP5"/>
-        <ctl name="ADC1 Volume" value="6"/>
-        <ctl name="ADC4 Volume" value="6"/>
+        <ctl name="ADC1 Volume" value="14" />
+        <ctl name="ADC4 Volume" value="14" />
+        <ctl name="TX_DEC1 Volume" value="90" />
+        <ctl name="TX_DEC2 Volume" value="90" />
     </path>
     <path name="voice-rec-mic">
         <path name="handset-mic"/>
@@ -3542,8 +3544,10 @@
         <ctl name="ADC4 ChMap" value="SWRM_TX2_CH2"/>
         <ctl name="ADC4_MIXER Switch" value="1"/>
         <ctl name="ADC4 MUX" value="INP5"/>
-        <ctl name="ADC1 Volume" value="8"/>
-        <ctl name="ADC4 Volume" value="8"/>
+        <ctl name="ADC1 Volume" value="14" />
+        <ctl name="ADC4 Volume" value="14" />
+        <ctl name="TX_DEC1 Volume" value="90" />
+        <ctl name="TX_DEC2 Volume" value="90" />
     </path>
     <path name="speaker-mic-voip">
         <ctl name="TX_CDC_DMA_TX_3 Channels" value="Two"/>
@@ -3558,8 +3562,10 @@
         <ctl name="ADC4 ChMap" value="SWRM_TX2_CH2"/>
         <ctl name="ADC4_MIXER Switch" value="1"/>
         <ctl name="ADC4 MUX" value="INP5"/>
-        <ctl name="ADC1 Volume" value="8"/>
-        <ctl name="ADC4 Volume" value="8"/>
+        <ctl name="ADC1 Volume" value="14" />
+        <ctl name="ADC4 Volume" value="14" />
+        <ctl name="TX_DEC1 Volume" value="90" />
+        <ctl name="TX_DEC2 Volume" value="90" />
     </path>
     <path name="speaker-mic-voip-highlight">
         <ctl name="TX_CDC_DMA_TX_3 Channels" value="Two"/>
@@ -3574,8 +3580,10 @@
         <ctl name="ADC4 ChMap" value="SWRM_TX2_CH2"/>
         <ctl name="ADC4_MIXER Switch" value="1"/>
         <ctl name="ADC4 MUX" value="INP5"/>
-        <ctl name="ADC1 Volume" value="8"/>
-        <ctl name="ADC4 Volume" value="8"/>
+        <ctl name="ADC1 Volume" value="14" />
+        <ctl name="ADC4 Volume" value="14" />
+        <ctl name="TX_DEC1 Volume" value="90" />
+        <ctl name="TX_DEC2 Volume" value="90" />
     </path>
     <path name="speaker-mic-voip-wide">
         <ctl name="TX_CDC_DMA_TX_3 Channels" value="Two"/>
@@ -3590,8 +3598,10 @@
         <ctl name="ADC4 ChMap" value="SWRM_TX2_CH2"/>
         <ctl name="ADC4_MIXER Switch" value="1"/>
         <ctl name="ADC4 MUX" value="INP5"/>
-        <ctl name="ADC1 Volume" value="8"/>
-        <ctl name="ADC4 Volume" value="8"/>
+        <ctl name="ADC1 Volume" value="14" />
+        <ctl name="ADC4 Volume" value="14" />
+        <ctl name="TX_DEC1 Volume" value="90" />
+        <ctl name="TX_DEC2 Volume" value="90" />
     </path>
     <path name="speaker-mic-liquid">
         <path name="amic4"/>
@@ -3631,10 +3641,10 @@
         <ctl name="ADC2_MIXER Switch" value="1"/>
         <ctl name="ADC3_MIXER Switch" value="1"/>
         <ctl name="ADC4_MIXER Switch" value="1"/>
-        <ctl name="ADC1 Volume" value="8"/>
+        <ctl name="ADC1 Volume" value="10"/>
         <ctl name="ADC2 Volume" value="0"/>
         <ctl name="ADC3 Volume" value="0"/>
-        <ctl name="ADC4 Volume" value="8"/>
+        <ctl name="ADC4 Volume" value="10"/>
     </path>
     <path name="voice-tty-hco-headset-mic">
         <ctl name="TX DEC6 MUX" value="SWR_MIC"/>
@@ -3671,10 +3681,10 @@
         <ctl name="ADC2_MIXER Switch" value="1"/>
         <ctl name="ADC3_MIXER Switch" value="1"/>
         <ctl name="ADC4_MIXER Switch" value="1"/>
-        <ctl name="ADC1 Volume" value="8"/>
+        <ctl name="ADC1 Volume" value="12"/>
         <ctl name="ADC2 Volume" value="8"/>
         <ctl name="ADC3 Volume" value="0"/>
-        <ctl name="ADC4 Volume" value="8"/>
+        <ctl name="ADC4 Volume" value="12"/>
     </path>
     <path name="voice-tty-vco-handset-mic">
         <path name="amic3"/>
