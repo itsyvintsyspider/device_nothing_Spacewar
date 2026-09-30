@@ -373,3 +373,10 @@ PRODUCT_COPY_FILES += \
 # Proprietary Vendor
 $(call inherit-product, vendor/nothing/Spacewar/Spacewar-vendor.mk)
 $(call inherit-product-if-exists, vendor/nothing/camera/nothing-camera.mk)
+
+# aptX (aptxals/aptxui apps -- the aptX codec libs themselves are already
+# packaged via Spacewar-vendor.mk, and audio_policy_configuration.xml
+# already advertises AUDIO_FORMAT_APTX/APTX_HD; this mk was checked out
+# but never inherited anywhere, so aptxalsOverlay above had nothing to
+# actually overlay)
+$(call inherit-product-if-exists, vendor/qcom/common/system/bt/bt-vendor.mk)
