@@ -58,16 +58,24 @@ int main() {
 
     /*
      * RichtapVibrator::init() brings the AAC engine up but leaves its
-     * internal master gain at whatever the engine defaults to (very low
-     * in practice -- predefined effects and setAmplitude() calls from
-     * Vibrator.cpp were both audible/tactile at only a fraction of their
-     * intended strength until this was set). LOS's own reference sets
-     * this once at startup too (0x7F there); maxed here at the user's
-     * request. Must run after cvib->init(), which is what actually calls
-     * aac_vibra_init() -- Vibrator's own constructor runs earlier than
-     * that in this same main(), so it can't be the one to set this.
+     * internal gain controls at whatever the engine defaults to. Setting
+     * two separate things here, confirmed distinct by decompiling
+     * libaacvibrator.so (Ghidra): aac_vibra_setAmplitude() only reaches
+     * VibratorPerformer::set_amplitude() -- the continuous/streaming
+     * amplitude path (setAmplitude() calls from Vibrator.cpp, e.g. the
+     * brightness slider). aac_vibra_dynamic_scale() reaches a separate
+     * VibratorPerformer::set_dynamic_scale() on the same performer
+     * object; unlike set_amplitude, nothing in this .so scopes it to one
+     * specific command path, so it's the more likely candidate for
+     * actually affecting perform()'s prebaked-effect dispatch
+     * (Looper::post_prebaked_effect(), a third, separate call chain that
+     * set_amplitude() never touches). Neither we nor LOS's own reference
+     * ever called this one. Must run after cvib->init(), which is what
+     * actually calls aac_vibra_init() -- Vibrator's own constructor runs
+     * earlier than that in this same main().
      */
     aac_vibra_setAmplitude(0xFF);
+    aac_vibra_dynamic_scale(0xFF);
 
     ABinderProcess_joinThreadPool();
     return EXIT_FAILURE;  // should not reach
