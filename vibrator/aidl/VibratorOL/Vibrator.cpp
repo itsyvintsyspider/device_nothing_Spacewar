@@ -101,7 +101,9 @@ InputFFDevice::InputFFDevice()
     mSupportGain = false;
     mSupportEffects = false;
     mSupportExternalControl = false;
-    mCurrAppId = INVALID_VALUE;
+    for (int i = 0; i < kFFSlotCount; i++)
+        mAppIds[i] = INVALID_VALUE;
+    mNextSlot = 0;
     mCurrMagnitude = 0x7fff;
     mInExternalControl = false;
 
@@ -220,6 +222,7 @@ int InputFFDevice::play(int effectId, uint32_t timeoutMs, long *playLengthMs) {
     struct input_event play;
     int16_t data[CUSTOM_DATA_LEN] = {0, 0, 0};
     int ret;
+    int slot = 0;
 #ifdef USE_EFFECT_STREAM
     const struct effect_stream *stream;
 #endif
@@ -234,13 +237,16 @@ int InputFFDevice::play(int effectId, uint32_t timeoutMs, long *playLengthMs) {
     }
 
     if (timeoutMs != 0) {
-        if (mCurrAppId != INVALID_VALUE) {
-            ret = TEMP_FAILURE_RETRY(ioctl(mVibraFd, EVIOCRMFF, mCurrAppId));
+        slot = mNextSlot;
+        mNextSlot = (mNextSlot + 1) % kFFSlotCount;
+
+        if (mAppIds[slot] != INVALID_VALUE) {
+            ret = TEMP_FAILURE_RETRY(ioctl(mVibraFd, EVIOCRMFF, mAppIds[slot]));
             if (ret == -1) {
                 ALOGE("ioctl EVIOCRMFF failed, errno = %d", -errno);
                 goto errout;
             }
-            mCurrAppId = INVALID_VALUE;
+            mAppIds[slot] = INVALID_VALUE;
         }
 
         memset(&effect, 0, sizeof(effect));
@@ -264,7 +270,7 @@ int InputFFDevice::play(int effectId, uint32_t timeoutMs, long *playLengthMs) {
             effect.replay.length = timeoutMs;
         }
 
-        effect.id = mCurrAppId;
+        effect.id = mAppIds[slot];
         effect.replay.delay = 0;
 
         ret = TEMP_FAILURE_RETRY(ioctl(mVibraFd, EVIOCSFF, &effect));
@@ -273,7 +279,7 @@ int InputFFDevice::play(int effectId, uint32_t timeoutMs, long *playLengthMs) {
             goto errout;
         }
 
-        mCurrAppId = effect.id;
+        mAppIds[slot] = effect.id;
         if (effectId != INVALID_VALUE && playLengthMs != NULL) {
             *playLengthMs = data[1] * 1000 + data[2];
 #ifdef USE_EFFECT_STREAM
@@ -284,30 +290,36 @@ int InputFFDevice::play(int effectId, uint32_t timeoutMs, long *playLengthMs) {
 
         play.value = 1;
         play.type = EV_FF;
-        play.code = mCurrAppId;
+        play.code = mAppIds[slot];
         play.time.tv_sec = 0;
         play.time.tv_usec = 0;
         ret = TEMP_FAILURE_RETRY(write(mVibraFd, (const void*)&play, sizeof(play)));
         if (ret == -1) {
             ALOGE("write failed, errno = %d\n", -errno);
-            ret = TEMP_FAILURE_RETRY(ioctl(mVibraFd, EVIOCRMFF, mCurrAppId));
+            ret = TEMP_FAILURE_RETRY(ioctl(mVibraFd, EVIOCRMFF, mAppIds[slot]));
             if (ret == -1)
                 ALOGE("ioctl EVIOCRMFF failed, errno = %d", -errno);
             goto errout;
         }
-    } else if (mCurrAppId != INVALID_VALUE) {
-        ret = TEMP_FAILURE_RETRY(ioctl(mVibraFd, EVIOCRMFF, mCurrAppId));
-        if (ret == -1) {
-            ALOGE("ioctl EVIOCRMFF failed, errno = %d", -errno);
-            goto errout;
+    } else {
+        /* Stop: clear every slot, not just the most recent one --
+         * off() means everything stops, regardless of how many
+         * requests are currently in flight across the pool.
+         */
+        for (int i = 0; i < kFFSlotCount; i++) {
+            if (mAppIds[i] == INVALID_VALUE)
+                continue;
+            ret = TEMP_FAILURE_RETRY(ioctl(mVibraFd, EVIOCRMFF, mAppIds[i]));
+            if (ret == -1)
+                ALOGE("ioctl EVIOCRMFF failed for slot %d, errno = %d", i, -errno);
+            mAppIds[i] = INVALID_VALUE;
         }
-        mCurrAppId = INVALID_VALUE;
     }
     mtx.unlock();
     return 0;
 
 errout:
-    mCurrAppId = INVALID_VALUE;
+    mAppIds[slot] = INVALID_VALUE;
     mtx.unlock();
     return ret;
 }
@@ -803,7 +815,7 @@ void VibratorOL::composePlayThread(VibratorOL *vibrator,
                  * haptics driver does expect an explicit off() command to restore HW/SW logic
                  * after that, so call it here. It would result a redundant off() command in
                  * normal case but it won't do any harm because it would be ignored and not sent
-                 * to haptics driver because of an invalid mCurrAppId. It would also result in the
+                 * to haptics driver because every FF slot is already invalid. It would also result in the
                  * primitive effect to stop immediately right after it's triggered in such
                  * corner case. But considering the main thread has stopped it before off() is
                  * called here, take this as a limitation and it is expected not playing the
