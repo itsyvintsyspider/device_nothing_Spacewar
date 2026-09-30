@@ -37,6 +37,7 @@
 
 #include "Vibrator.h"
 #include "richtap/RichtapVibrator.h"
+#include "richtap/aac_vibra_function.h"
 
 using aidl::android::hardware::vibrator::Vibrator;
 using aidl::vendor::aac::hardware::richtap::vibrator::RichtapVibrator;
@@ -54,6 +55,19 @@ int main() {
     CHECK(status == STATUS_OK);
 
     cvib->init(nullptr);
+
+    /*
+     * RichtapVibrator::init() brings the AAC engine up but leaves its
+     * internal master gain at whatever the engine defaults to (very low
+     * in practice -- predefined effects and setAmplitude() calls from
+     * Vibrator.cpp were both audible/tactile at only a fraction of their
+     * intended strength until this was set). LOS's own reference sets
+     * this once at startup too (0x7F there); maxed here at the user's
+     * request. Must run after cvib->init(), which is what actually calls
+     * aac_vibra_init() -- Vibrator's own constructor runs earlier than
+     * that in this same main(), so it can't be the one to set this.
+     */
+    aac_vibra_setAmplitude(0xFF);
 
     ABinderProcess_joinThreadPool();
     return EXIT_FAILURE;  // should not reach
