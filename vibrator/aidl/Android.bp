@@ -4,6 +4,10 @@ Common_CFlags += ["-Werror"]
 cc_library_shared {
     name: "vendor.qti.hardware.vibrator.impl.spacewar",
     vendor: true,
+    // libaacvibrator is a 64-bit-only prebuilt (compile_multilib: "64" in
+    // vendor/nothing/Spacewar/Android.bp); this library builds multilib
+    // by default and fails to resolve it for the 32-bit compat arch.
+    compile_multilib: "64",
     cflags: Common_CFlags,
     srcs: [
         "Vibrator.cpp",
