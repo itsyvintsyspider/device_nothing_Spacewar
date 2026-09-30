@@ -52,46 +52,6 @@ namespace android {
 namespace hardware {
 namespace vibrator {
 
-/*
- * Real RichTap prebaked-effect IDs, not guesses: reverse-engineered from
- * LineageOS's own spacewar vibrator HAL (same libaacvibrator.so blob we
- * link here, same aac_richtap.config), confirmed present in
- * /vendor/lib64/libaacvibrator.so on this device (nm -D shows every
- * aac_vibra_* symbol this file calls, matching aac_vibra_function.h
- * exactly). TICK/THUD/POP sharing 0x3003 is a real limit of the shipped
- * table, not something invented here -- LOS's own mapping has the same
- * overlap, and the actual per-ID waveform data lives in the closed
- * aac_richtap.config blob, not anything we can inspect from source.
- */
-static std::optional<uint32_t> mapEffectToPrebakedId(Effect effect) {
-    switch (effect) {
-        case Effect::CLICK:
-            return 0x3008;
-        case Effect::DOUBLE_CLICK:
-            return 0x1001;
-        case Effect::TICK:
-        case Effect::THUD:
-        case Effect::POP:
-            return 0x3003;
-        case Effect::HEAVY_CLICK:
-            return 0x3007;
-        default:
-            return std::nullopt;
-    }
-}
-
-static int32_t effectStrengthToRichtap(EffectStrength es) {
-    switch (es) {
-        case EffectStrength::LIGHT:
-            return 69;
-        case EffectStrength::STRONG:
-            return 150;
-        case EffectStrength::MEDIUM:
-        default:
-            return 100;
-    }
-}
-
 class Vibrator::VibratorPrivate {
 private:
     VibratorOL mVibratorOL;
@@ -182,25 +142,24 @@ public:
 
         VibratorSelectionLock.lock();
 
-        auto mappedEffect = mapEffectToPrebakedId(effect);
-        if (mappedEffect.has_value()) {
-            int32_t strength = effectStrengthToRichtap(es);
-            int32_t ret = aac_vibra_looper_prebaked_effect(mappedEffect.value(), strength);
-            if (ret >= 0) {
-                if (callback != nullptr) {
-                    std::thread([=] {
-                        usleep(ret * 1000);
-                        callback->onComplete();
-                    }).detach();
-                }
-                *_aidl_return = ret;
-                VibratorSelectionLock.unlock();
-                return ndk::ScopedAStatus::ok();
-            }
-            ALOGE("aac_vibra_looper_prebaked_effect(0x%x) failed: %d, falling back to VibratorOL",
-                  mappedEffect.value(), ret);
-        }
-
+        /*
+         * perform() deliberately does NOT go through RichTap. Traced with
+         * Ghidra: our RichTap prebaked-effect IDs (0x3008 CLICK, 0x3003
+         * TICK/THUD/POP, 0x3007 HEAVY_CLICK -- everything >= 0x3001)
+         * route through VibratorPerformer::perform_id() ->
+         * get_jnd_effect_stream(), a different, "just noticeable
+         * difference" calibration path than the normal
+         * get_effect_stream() (< 0x3001, e.g. DOUBLE_CLICK's 0x1001 --
+         * also faint in practice, so the split isn't the whole story).
+         * That path's real calibration data source is inside the closed
+         * aac_richtap.config blob and wasn't resolvable without
+         * decrypting it. VibratorOL (this kernel's own devicetree
+         * waveforms, already tuned distinct per effect) is the
+         * controllable, verified-working path for predefined effects.
+         * on()/setAmplitude()/off() still go through RichTap below --
+         * those are confirmed working well (charging vibration, slider
+         * checkpoints).
+         */
         mSelectedVibrator = &mVibratorOL;
 #ifdef USE_LIBPALCLIENT
         if (mVibSelector && mVibSelector->getVibForPerformApi(effect_id) == VIB_TYPE_CL)
