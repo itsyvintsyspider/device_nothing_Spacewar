@@ -84,22 +84,30 @@ private:
     int play(int effectId, uint32_t timeoutMs, long *playLengthMs);
     int mVibraFd;
     /*
-     * Small round-robin pool of FF slots instead of one reused slot.
-     * With a single slot, every new play() call unconditionally
-     * EVIOCRMFF'd whatever was in it first -- spamming haptics faster
-     * than one pattern+brake cycle could finish (e.g. flinging through
-     * a scrolling list full of tick haptics) meant each new request
-     * cut off the previous one mid-playback instead of queueing behind
-     * it, reading as dropped/missed haptics. Rotating through a few
+     * Round-robin pool of FF slots instead of one reused slot. With a
+     * single slot, every new play() call unconditionally EVIOCRMFF'd
+     * whatever was in it first -- spamming haptics faster than one
+     * pattern+brake cycle could finish (e.g. flinging through a
+     * scrolling list full of tick haptics) meant each new request cut
+     * off the previous one mid-playback instead of queueing behind it,
+     * reading as dropped/missed haptics. Rotating through several
      * independent slots means a burst of requests only starts
-     * colliding with itself after kFFSlotCount of them are in flight at
-     * once, not after every single one. kFFSlotCount is kept small and
-     * conservative -- this driver's actual max concurrent FF slot count
-     * (input_ff_create()'s own limit, separate from the devicetree
-     * effects_count) isn't known from source, so this doesn't assume a
-     * large headroom.
+     * colliding with itself after kFFSlotCount of them are in flight
+     * at once, not after every single one.
+     *
+     * kFFSlotCount = 7, one below the kernel's own hard ceiling: the
+     * driver (drivers/input/misc/qcom-hv-haptics.c) registers this
+     * exact input device with input_ff_create(input_dev, count), where
+     * count = min(chip->effects_count + 1, MAX_EFFECT_COUNT) -- our
+     * devicetree's 7 predefined effects + 1, so 8 total FF slots exist
+     * for this device, period, confirmed by reading that call site
+     * directly. Uploading a 9th concurrent effect would fail EVIOCSFF
+     * outright. Nothing else on this input device competes for slots
+     * (RichTap uses a separate ioctl protocol on its own misc device
+     * node, not this one's FF subsystem), so the only margin kept back
+     * is the one slot below the hard limit.
      */
-    static constexpr int kFFSlotCount = 4;
+    static constexpr int kFFSlotCount = 7;
     int16_t mAppIds[kFFSlotCount];
     int mNextSlot;
     int16_t mCurrMagnitude;
