@@ -16,6 +16,7 @@ cc_library_shared {
         "android.hardware.vibrator-V2-ndk",
         "vendor.qti.hardware.vibratorOL.impl.spacewar",
         "vendor.qti.hardware.vibratorSel.impl.spacewar",
+        "libaacvibrator",
     ],
     export_include_dirs: ["include"],
     include_dirs: [
