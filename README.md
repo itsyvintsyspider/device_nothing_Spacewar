@@ -1,56 +1,65 @@
-# device_nothing_Spacewar
+Device configuration for Nothing Phone (1)
+==========================================
 
-Device tree for the **Nothing Phone (1)** (codename `spacewar`), built for [Neoteric OS](https://github.com/Neoteric-OS) — a CLO/AOSP-based Android 16 custom ROM.
+The Nothing Phone (1) is a mid-range smartphone from Nothing.
 
-## Device specs
+It was released in July 2022.
 
-| | |
-|---|---|
-| Device | Nothing Phone (1) |
-| Codename | `spacewar` |
-| Model | A063 |
-| Release date | July 2022 |
-| SoC | Qualcomm Snapdragon 778G+ (SM7325 "Lahaina") |
-| CPU | Octa-core (1x2.4 GHz Kryo 670 Prime + 3x2.2 GHz Kryo 670 Gold + 4x1.9 GHz Kryo 670 Silver) |
-| GPU | Adreno 642L |
-| RAM | 8 GB / 12 GB |
-| Storage | 128 GB / 256 GB (UFS 3.1) |
-| Display | 6.55" FHD+ AMOLED, 120 Hz |
-| Battery | 4500 mAh, 33W wired / 15W wireless / 5W reverse wireless |
-| Rear camera | 50 MP wide + 50 MP ultrawide |
-| Front camera | 16 MP |
-| Glyph Interface | Yes |
+## Device specifications
 
-## Build info
+<table>
+    <tbody>
+        <tr>
+            <td>Basic</td>
+            <td colspan="2">Spec Sheet</td>
+        </tr>
+        <tr>
+            <td>Model</td>
+            <td>Nothing Phone (1)</td>
+        </tr>
+        <tr>
+            <td>SoC</td>
+            <td colspan="2">Qualcomm SM7325-AE Snapdragon 778G+ 5G (6 nm)</td>
+        </tr>
+        <tr>
+            <td>CPU</td>
+            <td colspan="2">Octa-core (1x2.5 GHz Cortex-A78 & 3x2.4 GHz Cortex-A78 & 4x1.9 GHz Cortex-A55)</td>
+        </tr>
+        <tr>
+            <td>GPU</td>
+            <td colspan="2">Adreno 642L</td>
+        </tr>
+        <tr>
+            <td>Memory</td>
+            <td colspan="2">128GB 8GB RAM, 256GB 8GB RAM, 256GB 12GB RAM</td>
+        </tr>
+        <tr>
+            <td>Shipped Android Version</td>
+            <td colspan="2">Android 12</td>
+        </tr>
+        <tr>
+            <td>Battery</td>
+            <td>4500 mAh, 33W wired charging, 15W wireless charging, 5W reverse wireless charging</td>
+        </tr>
+        <tr>
+            <td>Display</td>
+            <td>1080 x 2400 pixels, ~402 ppi density, OLED, 1 billion colors, 120Hz, HDR10+, 500 nits (typ), 1200 nits (peak), 6.55 inches</td>
+        </tr>
+        <tr>
+            <td>Camera (Wide)</td>
+            <td>50 MP, f/1.9, 24mm (wide), 1/1.56" sensor, PDAF, OIS</td>
+        </tr>
+        <tr>
+            <td>Camera (Ultrawide)</td>
+            <td>50 MP, f/2.2, 114˚ (ultrawide), 1/2.76" sensor, AF</td>
+        </tr>
+        <tr>
+            <td>Camera (Front)</td>
+            <td colspan="2">16 MP, f/2.5, (wide), 1/3.1" sensor</td>
+        </tr>
+    </tbody>
+</table>
 
-| | |
-|---|---|
-| Product name | `Spacewar` |
-| Lunch target | `Spacewar-userdebug` |
-| ROM base | Neoteric OS (`bka` branch, Android 16 / "Baklava") |
-| Kernel | [android_kernel_nothing_sm7325](https://github.com/itsyvintsyspider/android_kernel_nothing_sm7325) — see kernel README for details |
-| Vendor tree | [proprietary_vendor_nothing_Spacewar](https://github.com/itsyvintsyspider/proprietary_vendor_nothing_Spacewar) |
-| Hardware tree | [android_hardware_nothing](https://github.com/itsyvintsyspider/android_hardware_nothing) |
-| Stock blob source | Nothing OS `Spacewar-V3.2-260618` (final EOL build) |
+## Device picture
 
-## Building
-
-```bash
-source build/envsetup.sh
-lunch Spacewar-userdebug
-m updatepackage
-```
-
-## Credits
-
-- [pa-xe](https://github.com/pa-xe) — original `bka`-native device/vendor tree base
-- [Willay24](https://github.com/Willay24) — kernel debugging leads, kernel guidance
-- [Nyxalune](https://github.com/Nyxalune) — debugging leads
-- [ang3lo-azevedo](https://github.com/ang3lo-azevedo) — NGlyphs, GlyphAdapter
-- [Hellboy](https://github.com/Hellboy017) — Pong reference for Neoteric OS
-- Neoteric-OS — ROM base
-- LineageOS — original Spacewar device tree reference
-
-## Maintainer
-
-[itsyvintsyspider](https://github.com/itsyvintsyspider)
+![Nothing Phone (1)](https://fdn.gsmarena.com/imgroot/news/22/07/nothing-phone-1-official/inline/-1200/gsmarena_006.jpg "Nothing Phone (1)")
